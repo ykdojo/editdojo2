@@ -26,7 +26,7 @@ SECRET_KEY = '&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['editdojoproject-dev.us-west-2.elasticbeanstalk.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
+ALLOWED_HOSTS = ['young-cove-24937.herokuapp.com', 'editdojoproject-dev.us-west-2.elasticbeanstalk.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
 
 
 # Application definition
@@ -91,9 +91,9 @@ try:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['POSTGRES_DB'],
-            'USER': os.environ['POSTGRES_USER'],
-            'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+            'NAME': 'editdojo_database',
+            'USER': 'jonathan',
+            'PASSWORD': 'central456',
             'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
             'PORT': os.environ.get('POSTGRES_PORT', default='5432')
         },
