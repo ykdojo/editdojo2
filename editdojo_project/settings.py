@@ -26,7 +26,7 @@ SECRET_KEY = '&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['agile-mesa-45958.herokuapp.com', 'editdojoproject-dev.us-west-2.elasticbeanstalk.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
+ALLOWED_HOSTS = ['still-beyond-96936.herokuapp.com', 'agile-mesa-45958.herokuapp.com', 'editdojoproject-dev.us-west-2.elasticbeanstalk.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
 
 
 # Application definition
@@ -97,7 +97,7 @@ try:
             'PASSWORD': os.environ['POSTGRESDB_PASSWORD'],
             'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
             'PORT': os.environ.get('POSTGRES_PORT', default='5432')
-        }
+        },
     }
     db_from_env = dj_database_url.config() # this is for Heroku
     DATABASES['default'].update(db_from_env)
