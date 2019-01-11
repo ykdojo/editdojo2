@@ -26,6 +26,6 @@ class CustomUser(AbstractUser):
     learning_languages = models.ManyToManyField(Language, related_name="learning_users")
     fluent_languages = models.ManyToManyField(Language, related_name="fluent_users")
 
-class already_in_twitter(models.Model):
-    user = models.CharField(default=False, max_length=10)
-    already_in_twitter = models.CharField(default=False, max_length=10)
+#class already_in_twitter(models.Model):
+#    user = models.CharField(default=False, max_length=10)
+#    already_in_twitter = models.CharField(default=False, max_length=10)
