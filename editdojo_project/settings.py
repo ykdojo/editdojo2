@@ -97,7 +97,7 @@ try:
             'PASSWORD': os.environ['POSTGRESDB_PASSWORD'],
             'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
             'PORT': os.environ.get('POSTGRES_PORT', default='5432')
-        },
+        }
     }
     db_from_env = dj_database_url.config() # this is for Heroku
     DATABASES['default'].update(db_from_env)
