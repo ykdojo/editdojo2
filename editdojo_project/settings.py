@@ -87,7 +87,12 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+DATABASES = {}
 
+
+DATABASES['default'] = dj_database_url.config()
+
+"""
 try:
     DATABASES = {
         'default': {
@@ -109,7 +114,7 @@ except KeyError:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
