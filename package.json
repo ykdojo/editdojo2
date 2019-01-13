@@ -1,0 +1,34 @@
+{
+  "name": "editdojoprivate",
+  "version": "1.0.0",
+  "description": "init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js --progress --colors --mode development",
+    "watch": "webpack --config webpack.config.js --watch --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykdojo/editdojoprivate.git"
+  },
+  "author": "Edit Dojo",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/ykdojo/editdojoprivate/issues"
+  },
+  "homepage": "https://github.com/ykdojo/editdojoprivate#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.28.4",
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
