@@ -127,6 +127,10 @@ dmypy.json
 # Pycharm
 .idea/
 
+# webpack
+editdojo_project/webpack-stats.json
+static/bundles/bundled.js
+
 ## The following is for Node (copied from https://github.com/github/gitignore/blob/master/Node.gitignore)
 
 # Logs
