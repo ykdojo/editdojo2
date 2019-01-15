@@ -29,7 +29,6 @@ urlpatterns = [
     path('', home, name='home'),
     path('signup/', signup_flow),
     path('selectLanguages/', select_languages),
-    path('languagesSelected/', my_view),
 
     # This one is for YK's hello world app tutorial: https://youtu.be/h7rvyDK70FA
     path('sayHello/', my_view),
