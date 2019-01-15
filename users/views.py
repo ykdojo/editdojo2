@@ -20,7 +20,7 @@ def signup_flow(request):
     # TODO: If the user has already finished the signup flow,
     # then just redirect to root.
     if finished_signup_flow(current_user):
-        return HttpResponseRedirect('/languagesSelected/') # TODO: change this to root
+        return HttpResponseRedirect('/')
     return render(request, 'language_selection.html')
 
 # Handle the POST request for selecting langauges
