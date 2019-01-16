@@ -28,7 +28,7 @@ def select_languages(request):
     # First, make sure that the user is logged in.
     current_user = request.user
     if not current_user.is_authenticated:
-        return HttpResponseRedirect('/signup/')
+        return HttpResponseRedirect('/')
 
     learning_languages = []
     fluent_languages = []
