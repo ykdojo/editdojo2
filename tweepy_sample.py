@@ -15,8 +15,13 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 sample_user = CustomUser.objects.all()[0]
+# sample_user = CustomUser.objects.get(username = 'csdojo404')
 twitter_account = SocialAccount.objects.get(user_id=sample_user.id)
-# TODO: We should probably omit mentions here.
-tweets = api.user_timeline(twitter_account.uid, tweet_mode='extended')
-for tweet in tweets[:5]:
+tweets = api.user_timeline(twitter_account.uid, tweet_mode='extended', include_rts=False)
+filtered = filter(lambda t: not t.full_text.startswith('@'), tweets)
+tweets_without_mentions = list(filtered)
+
+for tweet in tweets_without_mentions[:5]:
+    print('=====TWEET=====')
     print(tweet.full_text)
+    print('===============\n')
