@@ -50,4 +50,8 @@ class Post(models.Model):
     tweet_id_str = models.CharField(max_length=100)
 
     posted_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    date_posted = models.DateField()
+    date_posted = models.DateTimeField()
+
+    def __str__(self):
+        return self.posted_by.username + ' - ' + self.text_content
+
