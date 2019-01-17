@@ -87,10 +87,19 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASES = {}
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'editdojo_database',
+            'USER': 'jonathan',
+            'PASSWORD': 'central456',
+            'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
+            'PORT': os.environ.get('POSTGRES_PORT', default='5432')
+        }
+    }
 
 
-DATABASES['default'] = dj_database_url.config()
+#DATABASES['default'] = dj_database_url.config()
 
 """
 try:
