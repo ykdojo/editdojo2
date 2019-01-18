@@ -12,6 +12,7 @@ pyyaml = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
+redis = "*"
 
 [dev-packages]
 
