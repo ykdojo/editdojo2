@@ -1,5 +1,5 @@
 import os
-
+from r_queue import queueing
 import redis
 from rq import Worker, Queue, Connection
 
@@ -13,3 +13,4 @@ if __name__ == '__main__':
     with Connection(conn):
         worker = Worker(map(Queue, listen))
         worker.work()
+        queueing()
