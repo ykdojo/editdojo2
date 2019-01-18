@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0b946c2dfe0f54d91bec494c4ab994a5cf865b1a4297c41f74699bbdf98c71e8"
+            "sha256": "e7d4fb18ae4a75fdd1f6e0e9d2b1d61c2dd4429153da184b052710e8df4dee04"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -36,6 +36,13 @@
                 "sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"
             ],
             "version": "==7.0"
+        },
+        "croniter": {
+            "hashes": [
+                "sha256:8dc579890b0bfd10cfc60a2c314de82adf06004bd90d0d7d5b384e19e93a7720",
+                "sha256:b9f2aa83a3db1dcea75e222d533793c22d737b0d5eb8ed7ccc5bfa6e067d10ed"
+            ],
+            "version": "==0.3.26"
         },
         "defusedxml": {
             "hashes": [
@@ -131,6 +138,13 @@
             ],
             "version": "==1.6.8"
         },
+        "python-dateutil": {
+            "hashes": [
+                "sha256:063df5763652e21de43de7d9e00ccf239f953a832941e37be541614732cdfc93",
+                "sha256:88f9287c0174266bb0d8cedd395cfba9c58e87e5ad86b2ce58859bc11be3cf02"
+            ],
+            "version": "==2.7.5"
+        },
         "python3-openid": {
             "hashes": [
                 "sha256:0086da6b6ef3161cfe50fb1ee5cceaf2cda1700019fda03c2c5c440ca6abe4fa",
@@ -191,6 +205,14 @@
             ],
             "index": "pypi",
             "version": "==0.13.0"
+        },
+        "rq-scheduler": {
+            "hashes": [
+                "sha256:90eb3915e31cc2032c301e5ab1fd5ad6f23d9500435046995e009f098e18efbe",
+                "sha256:ff7d45b34a8a39c9c83634f642aeef950641c75c4eeea3fa140bf574bfc6aca2"
+            ],
+            "index": "pypi",
+            "version": "==0.9"
         },
         "six": {
             "hashes": [
