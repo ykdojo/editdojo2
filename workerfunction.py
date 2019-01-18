@@ -13,6 +13,7 @@ def count_words_at_url(url):
 # add them to twitter list. then change them to True.
 
 def twitter_checker():
+    print("twitter checker started")
     #todo: find a way to keep tweepy authenticated without specifying it on every worker spinup
     #todo: find a way to retrieve user id in django models so i dont have to run api to get user id
     auth = tweepy.OAuthHandler(os.environ['TWITTER_CONSUMER_KEY'], os.environ['TWITTER_CONSUMER_SECRET'])

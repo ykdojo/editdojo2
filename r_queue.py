@@ -5,7 +5,7 @@ from rq_scheduler import Scheduler
 
 q = Queue('Default', connection=conn)
 scheduler = Scheduler(queue=q)
-
+print('scheduler executed')
 
 scheduler.cron(
     "*/5 * * * *",                # A cron string (e.g. "0 0 * * 0")
