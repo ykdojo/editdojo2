@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django_rq',
-    'scheduler',
 
     'django.contrib.sites',
     'allauth',
