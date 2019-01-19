@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import dj_database_url
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project.settings")
-from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
