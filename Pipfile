@@ -16,6 +16,7 @@ redis = "*"
 rq = "*"
 rq_scheduler = "*"
 django_rq = "*"
+django_rq_scheduler = "*"
 
 [dev-packages]
 
