@@ -9,7 +9,7 @@ import django_rq
 scheduler = django_rq.get_scheduler('default')
 print('scheduler has started')
 job = scheduler.cron(
-        "*/5 * * * *",                # A cron string (e.g. "0 0 * * 0")
+        "* * * * *",                # A cron string (e.g. "0 0 * * 0")
         func=count,                  # Function to be queued
      #   args=[arg1, arg2],          # Arguments passed into function when executed
      #   kwargs={'foo': 'bar'},      # Keyword arguments passed into function when executed
