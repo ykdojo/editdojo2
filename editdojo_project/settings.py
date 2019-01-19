@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'django-rq',
+    'django_rq',
     'scheduler',
 
     'django.contrib.sites',

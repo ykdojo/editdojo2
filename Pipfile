@@ -15,7 +15,7 @@ dj-database-url = "*"
 redis = "*"
 rq = "*"
 rq_scheduler = "*"
-django-rq = "*"
+django_rq = "*"
 
 [dev-packages]
 
