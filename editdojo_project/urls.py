@@ -37,4 +37,5 @@ urlpatterns = [
     path('todo/', todo_view),
     path('addTodo/', add_todo),
     path('deleteTodo/<int:todo_id>/', delete_todo),
+    path('django-rq/', include('django_rq.urls'))
 ]

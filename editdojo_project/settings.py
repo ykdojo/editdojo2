@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'django-rq',
+    'scheduler',
 
     'django.contrib.sites',
     'allauth',
@@ -88,8 +90,10 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config()
 
-
+"""
 try:
     DATABASES = {
         'default': {
@@ -111,7 +115,7 @@ except KeyError:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -131,7 +135,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+RQ_QUEUES = {
+    'Default': {
+        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
+        'DEFAULT_TIMEOUT': 500,
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
