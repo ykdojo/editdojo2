@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django_rq',
+    'dj_database_url',
 
     'django.contrib.sites',
     'allauth',
@@ -135,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 RQ_QUEUES = {
-    'Default': {
+    'default': {
         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
         'DEFAULT_TIMEOUT': 500,
     }
