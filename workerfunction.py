@@ -5,9 +5,11 @@ import tweepy
 import os
 from django_rq import job
 
-#Todo: background task that checks users in this db. for already_in_twitter.users that are False, \n
-# add them to twitter list. then change them to True.
 @job
+def count():
+    return 1 + 1
+
+
 def twitter_checker():
     print("twitter checker started")
     #todo: find a way to keep tweepy authenticated without specifying it on every worker spinup
@@ -24,7 +26,6 @@ def twitter_checker():
         update_db = already_in_twitter.objects.get(user=user_to_add)
         update_db.already_in_twitter = True
         update_db.save()
-    return('job complete')
 
 
 
