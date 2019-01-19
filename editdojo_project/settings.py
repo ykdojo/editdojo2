@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_rq',
     'dj_database_url',
+    'scheduler',
 
     'django.contrib.sites',
     'allauth',
