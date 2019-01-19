@@ -1,14 +1,12 @@
 from rq import Queue
 from worker import conn
-
+from workerfunction import twitter_checker
 
 
 
 q = Queue(connection=conn)
 
 
-def count():
-    return 1 + 1
 
-result = q.enqueue(count)
+result = q.enqueue(twitter_checker)
 
