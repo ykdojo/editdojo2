@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom'
 
 
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return (
+    <div>
+      <h3>Congrats! You have successfully finished your signup flow.</h3>
+      <p>TODO: show other users' tweets here.</p>
+    </div>
+  );
 }
 
 const element = <Welcome name="world" />;
