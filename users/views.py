@@ -12,13 +12,15 @@ def finished_signup_flow(user):
         return False
     return True
 
-# Hanlde the signup flow
+# Hanlde the signup flow after the user is authenticated.
 def signup_flow(request):
     current_user = request.user
+    # The sign-up flow happens after the user is authenticated.
+    # If they are not authenticated, redirect them to root.
     if not current_user.is_authenticated:
         return HttpResponseRedirect('/')
-    # TODO: If the user has already finished the signup flow,
-    # then just redirect to root.
+    # If the user has already finished the signup flow, there's
+    # no need to do it again. So, redirect them to root.
     if finished_signup_flow(current_user):
         return HttpResponseRedirect('/')
     return render(request, 'language_selection.html')
