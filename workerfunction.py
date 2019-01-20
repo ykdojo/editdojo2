@@ -18,15 +18,15 @@ def twitter_checker():
     for i in range(len(obj)):
         user_to_add = obj.values_list('user')[i][0]
         user_to_add_id = api.get_user(user_to_add)
-        api.add_list_member(id=user_to_add_id, slug='testlist', owner='editdojo')
+        api.add_list_member(id=user_to_add_id['id'], slug='testlist', owner='editdojo')
         update_db = already_in_twitter.objects.get(user=user_to_add)
         update_db.already_in_twitter = True
         update_db.save()
+    return("Job executed successfully")
 
 
-
-
-
+#examples
+#to save a record, use already_in_twitter(already_in_twitter=False, user='editdojo').save()
 
 
 #def add_member(user_id=2939531959):
