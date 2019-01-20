@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Language
 from .models import already_in_twitter
-from rq import Queue
-from worker import conn
 
 # returns True if the user has already finished the signup flow.
 def finished_signup_flow(user):
