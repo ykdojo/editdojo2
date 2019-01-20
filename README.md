@@ -84,6 +84,22 @@ python manage.py runserver
 
 7. Start the application opening the link shown in your terminal on a browser.
 
+
+## Setup Redis-Queue and Background Tasks
+1. Install Dependencies
+```pip install rq```
+```pip install django_rq```
+```pip install rq_scheduler```
+```pip install redis```
+
+2. Make sure your Heroku is set to Hobby Dynos
+3. add the redis addon in heroku ```heroku addons:create redistogo```
+4. Follow steps to configure django_rq ```https://github.com/rq/django-rq```
+5. start up an rqworker ```python manage.py rqworker default``` (in this case, our queue is named default)
+6. start up worker monitoring ```python manage.py rqstats```
+7. run ```heroku run python testqueue.py``` to enqueue (add to queue) a task in which the worker will process in the queue.
+
+
 ## Resources
 This is a part of the series of YouTube videos demonstrating how to build a real startup using Python and Javascript.
 Useful resources for this project:
