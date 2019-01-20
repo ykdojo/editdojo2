@@ -18,10 +18,6 @@ from django.urls import path, include
 from users.views import select_languages, signup_flow
 from main.views import home
 
-# The following two lines are for CS Dojo's tutorials
-from hello.views import my_view, home_view
-from todo.views import todo_view, add_todo, delete_todo
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
