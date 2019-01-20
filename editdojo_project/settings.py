@@ -50,9 +50,6 @@ INSTALLED_APPS = [
 
     'main', # the main app for this project
     'users', # the app for handling users and user-related data
-
-    'hello', # an app for CS Dojo's hello world tutorial
-    'todo', # an app for CS Dojo's to-do app tutorial
 ]
 
 MIDDLEWARE = [
@@ -90,10 +87,10 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 import dj_database_url
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
+#DATABASES = {}
+#DATABASES['default'] = dj_database_url.config()
 
-"""
+
 try:
     DATABASES = {
         'default': {
@@ -115,7 +112,7 @@ except KeyError:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

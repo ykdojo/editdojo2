@@ -25,17 +25,8 @@ from todo.views import todo_view, add_todo, delete_todo
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-
     path('', home, name='home'),
     path('signup/', signup_flow),
     path('selectLanguages/', select_languages),
-
-    # This one is for YK's hello world app tutorial: https://youtu.be/h7rvyDK70FA
-    path('sayHello/', my_view),
-
-    # These are for YK's to-do app tutorial: https://youtu.be/ovql0Ui3n_I
-    path('todo/', todo_view),
-    path('addTodo/', add_todo),
-    path('deleteTodo/<int:todo_id>/', delete_todo),
     path('django-rq/', include('django_rq.urls'))
 ]
