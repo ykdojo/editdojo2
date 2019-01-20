@@ -4,7 +4,7 @@ django.setup()
 
 from rq import Queue
 from worker import conn
-from main.views import twitter_checker
+from workerfunction import twitter_checker
 
 
 
