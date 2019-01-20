@@ -84,6 +84,14 @@ python manage.py runserver
 
 7. Start the application opening the link shown in your terminal on a browser.
 
+8. (Optional) If you do any sort of React development, run the following command:
+
+```
+npm run watch
+```
+
+More about it here: [https://bit.ly/2AIT7MK](https://bit.ly/2AIT7MK)
+
 ## Resources
 This is a part of the series of YouTube videos demonstrating how to build a real startup using Python and Javascript.
 Useful resources for this project:
