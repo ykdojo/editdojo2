@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load socialaccount %}
+{% load render_bundle from webpack_loader %}
 
 {% block content %}
 <!-- The assumption of this page is that user is logged in already. -->
@@ -41,8 +42,8 @@
         <div class="card col-lg-6 col-md-6 ml-auto mr-auto">
           <div class="section" style="padding:32px 0;">
             <div class="card-body">
-              <h3>Congrats! You have successfully finished your signup flow.</h3>
-              <p>TODO: show other users' tweets here.</p>
+              <div id="react"></div>
+              {% render_bundle 'main' %}
             </div>
           </div>
         </div>

@@ -46,12 +46,21 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
 
+    'webpack_loader', # this is for React: https://bit.ly/2AIT7MK
+
     'main', # the main app for this project
     'users', # the app for handling users and user-related data
 
     'hello', # an app for CS Dojo's hello world tutorial
     'todo', # an app for CS Dojo's to-do app tutorial
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'editdojo_project/webpack-stats.json'),
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
