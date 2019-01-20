@@ -10,7 +10,8 @@ def home(request):
     # TODO: Initiate the Twitter initialization in the background.
     # Maybe use this: https://django-background-tasks.readthedocs.io/en/latest/
 
-    # Then, show them the signup flow, including language selection.
+    # Once the user is authenticated, show them the signup flow,
+    # which includes language selection.
     if not finished_signup_flow(current_user):
         return HttpResponseRedirect('/signup/')
 
