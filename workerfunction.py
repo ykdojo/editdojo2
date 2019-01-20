@@ -6,10 +6,6 @@ import os
 from django_rq import job
 
 @job
-def count():
-    return 1 + 1
-
-
 def twitter_checker():
     print("twitter checker started")
     #todo: find a way to keep tweepy authenticated without specifying it on every worker spinup
