@@ -1,6 +1,6 @@
 from rq import Queue
 from worker import conn
-from users.views import twitter_checker
+from main.views import twitter_checker
 
 
 
