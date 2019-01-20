@@ -16,11 +16,6 @@ def finished_signup_flow(user):
 # Hanlde the signup flow
 def signup_flow(request):
     current_user = request.user
-    print(type(request))
-    print('Current User:' + current_user)
-    sa = current_user.__dict__.keys()
-    print(sa._setupfunc, sa._wrapped)
-    print(request.__dict__.keys())
     #already_in_twitter(already_in_twitter=str(current_user), user=False) #adds them to the already_in_twitter list
 
     #Todo: background task that checks users in this db. for already_in_twitter.users that are False, \n
