@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, UserManager
 from allauth.socialaccount import app_settings
+from allauth.socialaccount.models import SocialAccount
 from django.db import models
 
 class CustomUserManager(UserManager):
@@ -34,14 +35,14 @@ class Post(models.Model):
     source = models.CharField(max_length=100)
 
     # If this post was originally created on Twitter, we should
-    # store the Twitter user ID in twitter_user_id.
+    # store the associated social account.
     # This is for a case like this:
     # User A on Edit Dojo uses @account1 on Twitter to create a post.
     # Then, User A associates their acocunt with another Twitter
     # account, @account2 (maybe for a different language).
     # When that happens, it'll be still good to know which Twitter
     # account this post came from originally.
-    twitter_user_id = models.CharField(max_length=app_settings.UID_MAX_LENGTH)
+    associated_social_account = models.ForeignKey(SocialAccount, on_delete=models.SET_NULL, null=True)
     # NOTE: I used app_settings.UID_MAX_LENGTH here to follow the
     # original pattern in django-allauth:
     # https://github.com/pennersr/django-allauth/blob/master/allauth/socialaccount/app_settings.py
