@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from users.views import finished_signup_flow
 
 def home(request):
@@ -16,3 +16,6 @@ def home(request):
         return HttpResponseRedirect('/signup/')
 
     return render(request, 'main.html')
+
+def ajax_example(request):
+    return JsonResponse({'message': 'This is just an example of how to use AJAX!'})
