@@ -25,7 +25,7 @@ for tweet in tweets_without_mentions:
     new_post = Post(
         text_content = tweet.full_text,
         source = 'twitter', # TODO: move this constant into a separate file
-        twitter_user_id = tweet.user.id_str,
+        associated_social_account = twitter_account,
         tweet_id_str = tweet.id_str,
         posted_by = sample_user,
         date_posted = tweet.created_at

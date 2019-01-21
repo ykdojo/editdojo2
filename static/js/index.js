@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Cookies from 'js-cookie'
 
 
-class Welcome extends React.Component {
+class Feed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class Welcome extends React.Component {
   }
 }
 
-const element = <Welcome name="world" />;
+const element = <Feed/>;
 ReactDOM.render(
   element,
   window.react_mount,
