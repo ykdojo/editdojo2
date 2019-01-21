@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from users.views import finished_signup_flow
 
+# render and return the main feed.
+def render_feed(request):
+    return render(request, 'main.html')
+
 def home(request):
     current_user = request.user
     if not current_user.is_authenticated:
@@ -15,4 +19,4 @@ def home(request):
     if not finished_signup_flow(current_user):
         return HttpResponseRedirect('/signup/')
 
-    return render(request, 'main.html')
+    return render_feed(request)
