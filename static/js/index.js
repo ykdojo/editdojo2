@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom'
 
 
 function Welcome(props) {
+  let message = window.props;
   return (
     <div>
-      <h3>Congrats! You have successfully finished your signup flow.</h3>
+      <h3>{message}</h3>
       <p>TODO: show other users' tweets here.</p>
     </div>
   );
@@ -14,5 +15,5 @@ function Welcome(props) {
 const element = <Welcome name="world" />;
 ReactDOM.render(
   element,
-  document.getElementById('react')
+  window.react_mount,
 );
