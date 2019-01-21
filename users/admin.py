@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Language, Post
+from .models import CustomUser, Language
 
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
@@ -34,4 +34,3 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Language)
-admin.site.register(Post)

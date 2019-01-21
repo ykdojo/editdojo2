@@ -3,7 +3,8 @@
 # You can run this file with: python manage.py shell < create_post_samples.py
 import tweepy
 import os
-from users.models import CustomUser, Post
+from users.models import CustomUser
+from main.models import Post
 from allauth.socialaccount.models import SocialAccount
 
 CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
