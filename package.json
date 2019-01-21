@@ -29,6 +29,7 @@
     "webpack-cli": "^3.1.1"
   },
   "dependencies": {
+    "js-cookie": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   }
