@@ -1,3 +1,4 @@
+#Loads Apps
 import django
 django.setup()
 
@@ -6,10 +7,10 @@ from worker import conn
 from twitter_checker import twitter_checker
 import django_rq
 import click
-#Loads Apps
 
 
-
+#TODO: fix the command line argument, its not taking in any arguments right now
+#This file schedules the jobs to be queued for the worker to process. If scheduled is set to True, it will schedule. Else, it will queue the job once.
 @click.command()
 @click.option('--scheduled', default=False, help='Whether to schedule the jobs or not. If False, job will be queued once. If True, Job will be scheduled every minute.')
 def jobscheduler(scheduled):

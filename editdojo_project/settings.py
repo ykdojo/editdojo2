@@ -19,7 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-#heroku config:set DJANGO_SECRET_KEY='&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 
@@ -86,18 +85,13 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-import dj_database_url
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
-
-"""
 try:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': os.environ['POSTGRES_DB'],
-            'USER': os.environ['POSTGRESDB_USER'],
-            'PASSWORD': os.environ['POSTGRESDB_PASSWORD'],
+            'USER': os.environ['POSTGRES_USER'],
+            'PASSWORD': os.environ['POSTGRES_PASSWORD'],
             'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
             'PORT': os.environ.get('POSTGRES_PORT', default='5432')
         },
@@ -112,7 +106,7 @@ except KeyError:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -132,6 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 ##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
+#todo: add a local redis queue functionality for testing
 RQ_QUEUES = {
     'in_twitter_queue': {
         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku

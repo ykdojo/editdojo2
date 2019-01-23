@@ -20,7 +20,6 @@ class Language(models.Model):
     class Meta:
         ordering = ('english_representation',)
 
-
 class CustomUser(AbstractUser):
     objects = CustomUserManager()
     learning_languages = models.ManyToManyField(Language, related_name="learning_users")

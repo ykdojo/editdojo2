@@ -15,11 +15,6 @@ def finished_signup_flow(user):
 # Hanlde the signup flow
 def signup_flow(request):
     current_user = request.user
-    #already_in_twitter(already_in_twitter=str(current_user), user=False) #adds them to the already_in_twitter list
-
-    #Todo: background task that checks users in this db. for already_in_twitter.users that are False, \n
-    # add them to twitter list. then change them to True.
-    
     if not current_user.is_authenticated:
         return HttpResponseRedirect('/')
     # TODO: If the user has already finished the signup flow,
