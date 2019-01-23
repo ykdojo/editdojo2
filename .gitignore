@@ -1,6 +1,5 @@
 # Static files
 editdojo_project/staticfiles
-localstuff
 
 ### Django ###
 *.log

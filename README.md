@@ -86,18 +86,12 @@ python manage.py runserver
 
 
 ## Setup Redis-Queue and Background Tasks
-1. Install Dependencies
-```pip install rq```
-```pip install django_rq```
-```pip install rq_scheduler```
-```pip install redis```
-
-2. Make sure your Heroku is set to Hobby Dynos
-3. add the redis addon in heroku ```heroku addons:create redistogo```
-4. Follow steps to configure django_rq ```https://github.com/rq/django-rq```
-5. start up an rqworker ```python manage.py rqworker default``` (in this case, our queue is named default)
+1. Install Dependencies. Run ```pipenv update``` if pipfile.lock is out of date. 
+2. Make sure your Heroku is set to Hobby Dynos.You can do this in the web console.
+3. Add the redis addon in heroku ```heroku addons:create redistogo```
+5. start up an rqworker ```python manage.py rqworker in_twitter_queue``` (in this case, our queue is named in_twitter_queue)
 6. start up worker monitoring ```python manage.py rqstats```
-7. run ```heroku run python testqueue.py``` to enqueue (add to queue) a task in which the worker will process in the queue.
+7. run ```heroku run python job_scheduler.py --help``` to schedule / add jobs to the queue.
 
 
 ## Resources

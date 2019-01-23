@@ -24,5 +24,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('signup/', signup_flow),
     path('selectLanguages/', select_languages),
-    path('django-rq/', include('django_rq.urls'))
+    path('django-rq/', include('django_rq.urls')) #django-rq configuration console
 ]

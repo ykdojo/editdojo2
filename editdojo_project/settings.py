@@ -131,13 +131,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
 RQ_QUEUES = {
-    'default': {
+    'in_twitter_queue': {
         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
         'DEFAULT_TIMEOUT': 500,
     }
 }
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
