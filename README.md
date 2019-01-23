@@ -91,7 +91,7 @@ python manage.py runserver
 3. Add the redis addon in heroku ```heroku addons:create redistogo```
 5. start up an rqworker ```python manage.py rqworker in_twitter_queue``` (in this case, our queue is named in_twitter_queue)
 6. start up worker monitoring ```python manage.py rqstats```
-7. run ```heroku run python job_scheduler.py --help``` to schedule / add jobs to the queue.
+7. run ```heroku run python job_scheduler.py --help``` to schedule / add jobs to the queue. The command line argument is currently WIP.
 
 
 ## Resources
