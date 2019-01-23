@@ -77,4 +77,4 @@ def select_languages(request):
         if not language in current_user.fluent_languages.all():
             current_user.fluent_languages.add(language)
     current_user.save()
-    return HttpResponseRedirect('/languagesSelected/')
+    return HttpResponseRedirect('/')
