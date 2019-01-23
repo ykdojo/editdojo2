@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import select_languages, signup_flow
-from main.views import home
+from main.views import home, get_serialized_feed
 
 # The following two lines are for CS Dojo's tutorials
 from hello.views import my_view, home_view
@@ -29,6 +29,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('signup/', signup_flow),
     path('selectLanguages/', select_languages),
+    path('ajax/getSerializedFeed/', get_serialized_feed),
 
     # This one is for YK's hello world app tutorial: https://youtu.be/h7rvyDK70FA
     path('sayHello/', my_view),

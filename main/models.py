@@ -2,6 +2,7 @@ from django.db import models
 from users.models import CustomUser
 from allauth.socialaccount import app_settings
 from allauth.socialaccount.models import SocialAccount
+from rest_framework import serializers
 
 # A post made by a user.
 class Post(models.Model):
@@ -32,3 +33,13 @@ class Post(models.Model):
     def __str__(self):
         return self.posted_by.username + ' - ' + self.text_content
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'learning_languages', 'fluent_languages')
+
+class PostSerializer(serializers.ModelSerializer):
+    posted_by = UserSerializer()
+    class Meta:
+        model = Post
+        fields = ('text_content', 'posted_by', 'date_posted')
