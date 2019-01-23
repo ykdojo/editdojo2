@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.exceptions import PermissionDenied
 from users.views import finished_signup_flow
+from main.models import Post
 
-# render and return the main feed.
-def render_feed(request):
-    return render(request, 'main.html')
+def get_serialized_feed(request):
+    current_user = request.user
+    if not current_user.is_authenticated:
+        raise PermissionDenied
+    
+    return HttpResponse('hello aaaaa')
 
 def home(request):
     current_user = request.user
@@ -19,4 +24,4 @@ def home(request):
     if not finished_signup_flow(current_user):
         return HttpResponseRedirect('/signup/')
 
-    return render_feed(request)
+    return render(request, 'main.html')
