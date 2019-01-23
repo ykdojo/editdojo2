@@ -2,14 +2,19 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import PermissionDenied
 from users.views import finished_signup_flow
-from main.models import Post
+from main.models import Post, PostSerializer
+from rest_framework.renderers import JSONRenderer
 
 def get_serialized_feed(request):
     current_user = request.user
     if not current_user.is_authenticated:
         raise PermissionDenied
-    
-    return HttpResponse('hello aaaaa')
+
+    # TODO: Change posts to the acutal posts we want to pull
+    posts = Post.objects.all()[:2]
+    serializer = PostSerializer(posts, many=True)
+    serialized = JSONRenderer().render(serializer.data)
+    return HttpResponse(serialized)
 
 def home(request):
     current_user = request.user
