@@ -1,11 +1,13 @@
+import django
+django.setup()
+
 from rq import Queue
 from worker import conn
 from twitter_checker import twitter_checker
 import django_rq
 import click
 #Loads Apps
-import django
-django.setup()
+
 
 
 @click.command()

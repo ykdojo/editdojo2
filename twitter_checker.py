@@ -2,7 +2,6 @@ from users.models import CustomUser
 from allauth.socialaccount.models import SocialAccount
 import tweepy
 import os
-from django_rq import job
 
 
 #This is the function that gets queued to the worker to run.
