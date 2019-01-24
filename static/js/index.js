@@ -21,6 +21,7 @@ class Feed extends React.Component {
     super(props);
     this.state = {
       posts: null,
+      error: null,
     };
   }
 
@@ -45,6 +46,9 @@ class Feed extends React.Component {
       success: (result) => {
         this.setState({posts: result});
       },
+      error: (error) => {
+        this.setState({error: error});
+      },
       // TODO: Handle an error here.
     })
   };
@@ -53,7 +57,10 @@ class Feed extends React.Component {
     if (this.state.posts === null) {
       return (
         // TODO: Change this to a spinning icon
-        <div>loading posts...</div>
+        <div>
+          <div>loading posts...</div>
+          <div>this.state.error</div>
+        </div>
       );
     }
 
