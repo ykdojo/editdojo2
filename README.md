@@ -69,7 +69,7 @@ python manage.py shell < setup_twitter.py
 On Heroku:
 
 ```
-heroku run manage.py shell
+heroku run python manage.py shell
 
 exec(open("./setup_twitter.py").read())
 ```

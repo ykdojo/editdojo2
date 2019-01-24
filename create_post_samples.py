@@ -1,6 +1,10 @@
 # This is a one-time script for creating post samples
 # using real tweets.
 # You can run this file with: python manage.py shell < create_post_samples.py
+# Or, on Heroku:
+#   heroku run python manage.py shell
+# and then:
+#   exec(open("./create_post_samples.py").read())
 import tweepy
 import os
 from users.models import CustomUser
