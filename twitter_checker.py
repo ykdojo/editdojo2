@@ -9,26 +9,20 @@ import os
 def twitter_checker():
     print("twitter checker started")
     #todo: find a way to keep tweepy authenticated without specifying it on every worker spinup
-    #todo: find a way to retrieve user id in django models so i dont have to run api to get user id
     auth = tweepy.OAuthHandler(os.environ['TWITTER_CONSUMER_KEY'], os.environ['TWITTER_CONSUMER_SECRET'])
     auth.set_access_token(os.environ['TWITTER_ACCESS_KEY'], os.environ['TWITTER_ACCESS_SECRET'])
     api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
     users = CustomUser.objects.filter(already_in_twitter_list=False) #looks for all users who are 'False' in the model.
+    sa = SocialAccount.objects.all()
     for user in users:
-        user_to_add = users.values_list('username')[i][0] #get user ID
-        user_to_add_id = api.get_user(user_to_add)
-        #todo: need to make an actual twitterlist first
-        api.add_list_member(user_id=user_to_add_id['id'], slug='editdojo_member_list', owner_screen_name='editdojo') #add user to twitter list
-        user = CustomUser.objects.get(username=user_to_add)
-        user.already_in_twitter = True #Database is updated to show that the user has been added to the twitter list.
+        userid = [acc.uid for acc in sa if user.username == str(acc)] #returns the UID of user in socialaccount if it matches with customuser
+        if len(userid[0]) == 0: #if uid returns empty. userid is a list, so we grab the element inside it
+            userid = api.get_user(user) #use the api instead to get UID
+        api.add_list_member(user_id=userid[0], slug=os.environ['TWITTER_LIST'], owner_screen_name=os.environ['OWNER_SCREEN_NAME']) #add user to twitter list
+
+
+        user.already_in_twitter_list = True #Database is updated to show that the user has been added to the twitter list.
         user.save()
     return("Job executed successfully")
-
-
-#---Manipulating Database---
-
-#Adding Records
-#to save a record, use already_in_twitter(already_in_twitter=False, user='editdojo').save()
-
 
 
