@@ -19,8 +19,6 @@ def twitter_checker():
         if len(userid[0]) == 0: #if uid returns empty. userid is a list, so we grab the element inside it
             userid = api.get_user(user) #use the api instead to get UID
         api.add_list_member(user_id=userid[0], slug=os.environ['TWITTER_LIST'], owner_screen_name=os.environ['OWNER_SCREEN_NAME']) #add user to twitter list
-
-
         user.already_in_twitter_list = True #Database is updated to show that the user has been added to the twitter list.
         user.save()
     return("Job executed successfully")
