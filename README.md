@@ -92,6 +92,15 @@ npm run watch
 
 More about it here: [https://bit.ly/2AIT7MK](https://bit.ly/2AIT7MK)
 
+## Setup Redis-Queue and Background Tasks
+1. Install Dependencies. Run ```pipenv update``` if pipfile.lock is out of date. 
+2. Make sure your Heroku is set to Hobby Dynos.You can do this in the web console.
+3. Add the redis addon in heroku ```heroku addons:create redistogo```
+4. start up an rqworker ```python manage.py rqworker in_twitter_queue``` (in this case, our queue is named in_twitter_queue)
+5. start up worker monitoring ```python manage.py rqstats```
+6. run ```heroku run python job_scheduler.py --help``` to schedule / add jobs to the queue. The command line argument is currently WIP.
+
+
 ## Resources
 This is a part of the series of YouTube videos demonstrating how to build a real startup using Python and Javascript.
 Useful resources for this project:

@@ -28,5 +28,4 @@ def home(request):
     # which includes language selection.
     if not finished_signup_flow(current_user):
         return HttpResponseRedirect('/signup/')
-
     return render(request, 'main.html')

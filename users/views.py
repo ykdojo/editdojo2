@@ -78,3 +78,4 @@ def select_languages(request):
             current_user.fluent_languages.add(language)
     current_user.save()
     return HttpResponseRedirect('/')
+
