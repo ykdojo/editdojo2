@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import select_languages, signup_flow
-from main.views import home
+from main.views import home, get_serialized_feed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,9 @@ urlpatterns = [
     path('', home, name='home'),
     path('signup/', signup_flow),
     path('selectLanguages/', select_languages),
-    path('django-rq/', include('django_rq.urls')) #django-rq configuration console
+
+    path('django-rq/', include('django_rq.urls')), #django-rq configuration console
+
+    path('ajax/getSerializedFeed/', get_serialized_feed),
 ]
+

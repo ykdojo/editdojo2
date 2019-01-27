@@ -26,4 +26,3 @@ class CustomUser(AbstractUser):
     fluent_languages = models.ManyToManyField(Language, related_name="fluent_users")
     already_in_twitter_list = models.BooleanField(default=False)
 
-

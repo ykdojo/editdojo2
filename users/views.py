@@ -12,15 +12,17 @@ def finished_signup_flow(user):
         return False
     return True
 
-# Hanlde the signup flow
+# Hanlde the signup flow after the user is authenticated.
 def signup_flow(request):
     current_user = request.user
+    # The sign-up flow happens after the user is authenticated.
+    # If they are not authenticated, redirect them to root.
     if not current_user.is_authenticated:
         return HttpResponseRedirect('/')
-    # TODO: If the user has already finished the signup flow,
-    # then just redirect to root.
+    # If the user has already finished the signup flow, there's
+    # no need to do it again. So, redirect them to root.
     if finished_signup_flow(current_user):
-        return HttpResponseRedirect('/languagesSelected/') # TODO: change this to root
+        return HttpResponseRedirect('/')
     return render(request, 'language_selection.html')
 
 # Handle the POST request for selecting langauges
@@ -28,7 +30,7 @@ def select_languages(request):
     # First, make sure that the user is logged in.
     current_user = request.user
     if not current_user.is_authenticated:
-        return HttpResponseRedirect('/signup/')
+        return HttpResponseRedirect('/')
 
     learning_languages = []
     fluent_languages = []
@@ -75,6 +77,5 @@ def select_languages(request):
         if not language in current_user.fluent_languages.all():
             current_user.fluent_languages.add(language)
     current_user.save()
-    return HttpResponseRedirect('/languagesSelected/')
-
+    return HttpResponseRedirect('/')
 

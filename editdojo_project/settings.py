@@ -25,7 +25,7 @@ SECRET_KEY = '&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['agile-mesa-45958.herokuapp.com', 'editdojoproject-dev.us-west-2.elasticbeanstalk.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
+ALLOWED_HOSTS = ['agile-mesa-45958.herokuapp.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
 
 
 # Application definition
@@ -47,9 +47,18 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
 
+    'webpack_loader', # this is for React: https://bit.ly/2AIT7MK
+
     'main', # the main app for this project
     'users', # the app for handling users and user-related data
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'editdojo_project/webpack-stats.json'),
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,7 +155,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

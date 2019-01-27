@@ -17,6 +17,9 @@ rq = "*"
 rq_scheduler = "*"
 django_rq = "*"
 click = "*"
+django-webpack-loader = "*"
+djangorestframework = "*"
+
 
 [dev-packages]
 
