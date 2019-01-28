@@ -7,11 +7,12 @@ class Post extends React.Component {
   render() {
     const post = this.props.data;
     return (
-      <div>
-        <div>@{post.posted_by.username}</div>
-        <div>{post.text_content}</div>
-        <hr></hr>
-      </div>
+        <div className="section" style={{padding: '26px 0'}}>
+          <div className='card-body'>
+            <div>@{post.posted_by.username}</div>
+            <div>{post.text_content}</div>
+          </div>
+        </div>
     );
   }
 }
@@ -61,7 +62,11 @@ class Feed extends React.Component {
     return (
       <div style={{whiteSpace: 'pre-line'}}>
         {this.state.posts.map((post, index) => (
-          <Post key={index} data={post} />
+          <div class="row" style={{margin:'0 8px'}}>
+            <div class="card col-lg-6 col-md-6 ml-auto mr-auto">        
+              <Post key={index} data={post} />
+            </div>
+          </div>
         ))}
       </div>
     );
