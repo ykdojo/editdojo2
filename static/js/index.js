@@ -63,7 +63,8 @@ class Feed extends React.Component {
       <div style={{whiteSpace: 'pre-line'}}>
         {this.state.posts.map((post, index) => (
           <div class="row" style={{margin:'0 8px'}}>
-            <div class="card col-lg-6 col-md-6 ml-auto mr-auto">        
+            <div class="card col-lg-6 col-md-6 ml-auto mr-auto"
+                  style={{marginTop: '10px', marginBottom: '10px'}}>
               <Post key={index} data={post} />
             </div>
           </div>
