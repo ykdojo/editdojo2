@@ -5,12 +5,15 @@
 
 {% block content %}
 <!-- The assumption of this page is that user is logged in already. -->
-<body class="login-page sidebar-collapse" style="background-color: #d8d8d8;">
+<body class="login-page sidebar-collapse" style="background-color: #d2d2d2">
   <nav
     class="navbar navbar-transparent fixed-top navbar-expand-lg"
     color-on-scroll="100"
     id="sectionsNav"
-    style="position: absolute;"
+    style="position: relative;
+    background-color: #989898 !important;
+    margin-bottom: 0;
+    padding-bottom: 20px;"
   >
     <div class="container">
       <div class="navbar-translate">
@@ -38,17 +41,15 @@
       </div>
     </div>
   </nav>
-  <div
-    class="page-header header-filter"
-    style="background-size: cover;
-           background-position: top center;
-           height: 15vh;
-           min-height: 15vh;"
-  >
-  </div>
 
   <div class="main" style="background-color: #d2d2d2;">
     <div class="container">
+      <div class="row" style='margin: 0 8px; text-align: center; display:block;'>
+        <h4 style="text-decoration: underline #ae04ff;
+                  margin-top: 20px;
+                  margin-bottom: 0;
+                  font-weight: 400;">These tweets still need edits!</h4>
+      </div>
       <div id="react"></div>
     </div>
   </div>
