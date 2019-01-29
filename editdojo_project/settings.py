@@ -95,6 +95,11 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DATABASES = {}
+DATABASES['default'] = {}
+db_from_env = dj_database_url.config() # this is for Heroku
+DATABASES['default'].update(db_from_env)
+
 try:
     DATABASES = {
         'default': {
