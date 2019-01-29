@@ -99,7 +99,7 @@ DATABASES = {}
 DATABASES['default'] = {}
 db_from_env = dj_database_url.config() # this is for Heroku
 DATABASES['default'].update(db_from_env)
-
+"""
 try:
     DATABASES = {
         'default': {
@@ -121,7 +121,7 @@ except KeyError:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
