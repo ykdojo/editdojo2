@@ -11,7 +11,7 @@ def get_serialized_feed(request):
         raise PermissionDenied
 
     # TODO: Change posts to the acutal posts we want to pull
-    posts = Post.objects.all()[:2]
+    posts = Post.objects.all()
     serializer = PostSerializer(posts, many=True)
     serialized = JSONRenderer().render(serializer.data)
     return HttpResponse(serialized)
