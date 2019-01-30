@@ -36,7 +36,8 @@ class Post extends React.Component {
         <div className="section" style={{padding: '5px 0', fontSize: '14px'}}>
           <div className='card-body' style={{padding: '15px 10px'}}>
             <div style={{fontSize: '15px', marginBottom: '10px', lineHeight: '20px'}}>
-              <a href={profileLink} target="_blank">@{post.posted_by.username}</a> - {date}
+              <a href={profileLink} target="_blank">@{post.posted_by.username}</a>
+              <span style={{fontSize: '95%'}}> - {date}</span>
             </div>
             <div style={{lineHeight: '21px'}}>{post.text_content}</div>
           </div>
