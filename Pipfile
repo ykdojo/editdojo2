@@ -12,8 +12,14 @@ pyyaml = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
+redis = "*"
+rq = "*"
+rq_scheduler = "*"
+django_rq = "*"
+click = "*"
 django-webpack-loader = "*"
 djangorestframework = "*"
+
 
 [dev-packages]
 

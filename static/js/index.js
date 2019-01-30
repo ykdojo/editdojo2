@@ -22,6 +22,7 @@ class Feed extends React.Component {
     super(props);
     this.state = {
       posts: null,
+      error: null,
     };
   }
 
@@ -46,19 +47,44 @@ class Feed extends React.Component {
       success: (result) => {
         this.setState({posts: result});
       },
+      error: (error) => {
+        this.setState({error: error});
+      },
       // TODO: Handle an error here.
     })
   };
 
   render() {
-    if (!this.state.posts) {
+    if (this.state.posts === null) {
       return (
         // TODO: Change this to a spinning icon
-        <div>loading posts...</div>
+        <div>
+          <div>loading posts...</div>
+          <div>this.state.error</div>
+        </div>
       );
     }
 
-    console.log(this.state.posts[0].text_content);
+    if (!this.state.posts instanceof Array) {
+      return  (
+        <div>
+          An unexpected error has occurred! Please tweet at us
+          @EditDojo to let us know that you got this message
+          so we can look into what's going on.
+        </div>
+      )
+    }
+
+    if (this.state.posts.length == 0) {
+      return (
+        <div>
+          No posts have been retrieved for some reason. Please tweet
+          at us @EditDojo to let us know that you got this message
+          so we can look into what's going on.
+        </div>
+      )
+    }
+
     return (
       <div style={{whiteSpace: 'pre-line'}}>
         {this.state.posts.map((post, index) => (

@@ -19,14 +19,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.100', '127.0.0.1', 'localhost', 'editdojosecret.herokuapp.com']
+ALLOWED_HOSTS = ['agile-mesa-45958.herokuapp.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
 
 
 # Application definition
@@ -39,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'django_rq',
+    'scheduler',
 
     'django.contrib.sites',
     'allauth',
@@ -50,9 +51,6 @@ INSTALLED_APPS = [
 
     'main', # the main app for this project
     'users', # the app for handling users and user-related data
-
-    'hello', # an app for CS Dojo's hello world tutorial
-    'todo', # an app for CS Dojo's to-do app tutorial
 ]
 
 WEBPACK_LOADER = {
@@ -96,6 +94,7 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
 try:
     DATABASES = {
         'default': {
@@ -136,7 +135,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
+#todo: add a local redis queue functionality for testing
+RQ_QUEUES = {
+    'in_twitter_queue': {
+        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
+        'DEFAULT_TIMEOUT': 500,
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
