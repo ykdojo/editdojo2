@@ -6,6 +6,9 @@ from rest_framework import serializers
 
 # A post made by a user.
 class Post(models.Model):
+    class Meta:
+        ordering = ['-date_posted']
+
     text_content = models.TextField()
 
     # The only choice for the source field is "twitter" right now.
