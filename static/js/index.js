@@ -6,11 +6,12 @@ import Cookies from 'js-cookie'
 class Post extends React.Component {
   render() {
     const post = this.props.data;
+    const profileLink = "https://twitter.com/intent/user?user_id=" + post.associated_social_account.uid;
     return (
         <div className="section" style={{padding: '5px 0', fontSize: '14px'}}>
           <div className='card-body' style={{padding: '15px 10px'}}>
-            <div style={{fontWeight: '400'}}>@{post.posted_by.username}</div>
-            <div>{post.text_content}</div>
+            <div style={{fontSize: '15px', marginBottom: '10px', lineHeight: '20px'}}><a href={profileLink} target="_blank">@{post.posted_by.username}</a></div>
+            <div style={{lineHeight: '21px'}}>{post.text_content}</div>
           </div>
         </div>
     );

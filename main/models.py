@@ -38,8 +38,14 @@ class UserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ('username', 'learning_languages', 'fluent_languages')
 
+class SocialAccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SocialAccount
+        fields = ('uid',)
+
 class PostSerializer(serializers.ModelSerializer):
     posted_by = UserSerializer()
+    associated_social_account = SocialAccountSerializer()
     class Meta:
         model = Post
-        fields = ('text_content', 'posted_by', 'date_posted')
+        fields = ('text_content', 'posted_by', 'date_posted', 'associated_social_account')
