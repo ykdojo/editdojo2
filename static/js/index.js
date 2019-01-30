@@ -14,13 +14,13 @@ function formatDate(dateString) {
 
   const hours = timeSince.getHour();
   if (hours > 0) {
-    const toAppend = hours == 1 ? ' hours ago' : ' hours ago'
+    const toAppend = hours == 1 ? ' hour ago' : ' hours ago'
     return hours + toAppend;
   }
 
   const minutes = timeSince.getMinute();
   if (minutes > 0) {
-    const toAppend = minutes == 1 ? ' minutes ago' : ' minutes ago'
+    const toAppend = minutes == 1 ? ' minute ago' : ' minutes ago'
     return minutes + toAppend;
   }
 
