@@ -6,11 +6,14 @@ import Cookies from 'js-cookie'
 class Post extends React.Component {
   render() {
     const post = this.props.data;
+    const date = post.date_posted;
     const profileLink = "https://twitter.com/intent/user?user_id=" + post.associated_social_account.uid;
     return (
         <div className="section" style={{padding: '5px 0', fontSize: '14px'}}>
           <div className='card-body' style={{padding: '15px 10px'}}>
-            <div style={{fontSize: '15px', marginBottom: '10px', lineHeight: '20px'}}><a href={profileLink} target="_blank">@{post.posted_by.username}</a></div>
+            <div style={{fontSize: '15px', marginBottom: '10px', lineHeight: '20px'}}>
+              <a href={profileLink} target="_blank">@{post.posted_by.username}</a> - {date.toString()}
+            </div>
             <div style={{lineHeight: '21px'}}>{post.text_content}</div>
           </div>
         </div>
@@ -61,7 +64,7 @@ class Feed extends React.Component {
         // TODO: Change this to a spinning icon
         <div>
           <div>loading posts...</div>
-          <div>this.state.error</div>
+          <div>{this.state.error}</div>
         </div>
       );
     }
@@ -89,8 +92,8 @@ class Feed extends React.Component {
     return (
       <div style={{whiteSpace: 'pre-line'}}>
         {this.state.posts.map((post, index) => (
-          <div class="row" style={{margin:'0 8px'}}>
-            <div class="card col-lg-6 col-md-6 ml-auto mr-auto"
+          <div key={index} className="row" style={{margin:'0 8px'}}>
+            <div className="card col-lg-6 col-md-6 ml-auto mr-auto"
                   style={{marginTop: '10px', marginBottom: '10px'}}>
               <Post key={index} data={post} />
             </div>
