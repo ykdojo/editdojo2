@@ -7,9 +7,9 @@ class Post extends React.Component {
   render() {
     const post = this.props.data;
     return (
-        <div className="section" style={{padding: '26px 0'}}>
-          <div className='card-body'>
-            <div>@{post.posted_by.username}</div>
+        <div className="section" style={{padding: '5px 0', fontSize: '14px'}}>
+          <div className='card-body' style={{padding: '15px 10px'}}>
+            <div style={{fontWeight: '400'}}>@{post.posted_by.username}</div>
             <div>{post.text_content}</div>
           </div>
         </div>
