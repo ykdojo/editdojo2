@@ -42,8 +42,8 @@ class LanguageSerializer(serializers.ModelSerializer):
         fields = ('short_representation',)
 
 class UserSerializer(serializers.ModelSerializer):
-    learning_languages = LanguageSerializer()
-    fluent_languages = LanguageSerializer()
+    learning_languages = LanguageSerializer(many=True)
+    fluent_languages = LanguageSerializer(many=True)
     class Meta:
         model = CustomUser
         fields = ('username', 'learning_languages', 'fluent_languages')
