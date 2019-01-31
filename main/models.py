@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import CustomUser
+from users.models import CustomUser, Language
 from allauth.socialaccount import app_settings
 from allauth.socialaccount.models import SocialAccount
 from rest_framework import serializers
@@ -36,7 +36,14 @@ class Post(models.Model):
     def __str__(self):
         return self.posted_by.username + ' - ' + self.text_content
 
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = ('short_representation',)
+
 class UserSerializer(serializers.ModelSerializer):
+    learning_languages = LanguageSerializer()
+    fluent_languages = LanguageSerializer()
     class Meta:
         model = CustomUser
         fields = ('username', 'learning_languages', 'fluent_languages')
