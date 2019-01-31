@@ -1,11 +1,14 @@
 from django.db import models
-from users.models import CustomUser
+from users.models import CustomUser, Language
 from allauth.socialaccount import app_settings
 from allauth.socialaccount.models import SocialAccount
 from rest_framework import serializers
 
 # A post made by a user.
 class Post(models.Model):
+    class Meta:
+        ordering = ['-date_posted']
+
     text_content = models.TextField()
 
     # The only choice for the source field is "twitter" right now.
@@ -33,13 +36,26 @@ class Post(models.Model):
     def __str__(self):
         return self.posted_by.username + ' - ' + self.text_content
 
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = ('short_representation',)
+
 class UserSerializer(serializers.ModelSerializer):
+    learning_languages = LanguageSerializer()
+    fluent_languages = LanguageSerializer()
     class Meta:
         model = CustomUser
         fields = ('username', 'learning_languages', 'fluent_languages')
 
+class SocialAccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SocialAccount
+        fields = ('uid',)
+
 class PostSerializer(serializers.ModelSerializer):
     posted_by = UserSerializer()
+    associated_social_account = SocialAccountSerializer()
     class Meta:
         model = Post
-        fields = ('text_content', 'posted_by', 'date_posted')
+        fields = ('text_content', 'posted_by', 'date_posted', 'associated_social_account')
