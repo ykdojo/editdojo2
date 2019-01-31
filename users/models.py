@@ -8,6 +8,10 @@ class Language(models.Model):
     # Representation of this language in English.
     # For example, "Japanese" or "Spanish".
     english_representation = models.CharField(max_length=100)
+
+    # A short form representation of this langauge.
+    # For example, "EN" for English and "JP" for Japanese.
+    short_representation = models.CharField(max_length=50, null=True)
     
     # TODO: Add a LanguageLabel model later representing
     # languages in different languages.

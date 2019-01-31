@@ -11,6 +11,7 @@ def get_serialized_feed(request):
         raise PermissionDenied
 
     # TODO: Change posts to the acutal posts we want to pull
+    # TODO: Only retrieve recent posts (maybe like the 20 most recent ones)
     posts = Post.objects.all()
     serializer = PostSerializer(posts, many=True)
     serialized = JSONRenderer().render(serializer.data)
