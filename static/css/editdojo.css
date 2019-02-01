@@ -15,3 +15,15 @@ img.ed-plus-sign {
 img:hover.ed-plus-sign {
     opacity: 0.5;
 }
+
+a.ed-username {
+    color: #b72bcf;
+}
+
+.btn.btn-primary.btn-link.ed-edit-button {
+    color: #b72bcf;
+}
+
+.btn.btn-primary.btn-link.ed-edit-button:active {
+    opacity: 0.6;
+}
