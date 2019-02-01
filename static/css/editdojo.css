@@ -23,3 +23,7 @@ a.ed-username {
 .btn.btn-primary.btn-link.ed-edit-button {
     color: #b72bcf;
 }
+
+.btn.btn-primary.btn-link.ed-edit-button:active {
+    opacity: 0.6;
+}
