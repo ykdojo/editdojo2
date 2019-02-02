@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django_rq',
-    'scheduler',
 
     'django.contrib.sites',
     'allauth',
@@ -95,11 +94,7 @@ WSGI_APPLICATION = 'editdojo_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {}
-DATABASES['default'] = {}
-db_from_env = dj_database_url.config() # this is for Heroku
-DATABASES['default'].update(db_from_env)
-"""
+
 try:
     DATABASES = {
         'default': {
@@ -121,7 +116,7 @@ except KeyError:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -143,6 +138,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
 #todo: add a local redis queue functionality for testing
 RQ_QUEUES = {
+    'local': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'PASSWORD': 'some-password',
+        'DEFAULT_TIMEOUT': 360,
+    },
     'in_twitter_queue': {
         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
         'DEFAULT_TIMEOUT': 500,

@@ -25,8 +25,8 @@ def jobscheduler(flag):
             )
     else:
         click.echo(f"Flag set to: {flag}! - running one job only")
-        q = Queue(connection=conn)
-        result = q.enqueue(twitter_checker)
+        queue = django_rq.get_queue('in_twitter_queue')
+        queue.enqueue(twitter_checker)
 
 if __name__ == '__main__':
     jobscheduler()
