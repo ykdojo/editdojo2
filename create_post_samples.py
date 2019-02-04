@@ -20,7 +20,7 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-sample_user = CustomUser.objects.get(username = 'csdojo404')
+sample_user = CustomUser.objects.get(username = 'EditDojo')
 twitter_account = SocialAccount.objects.get(user_id=sample_user.id)
 tweets = api.user_timeline(twitter_account.uid, tweet_mode='extended', include_rts=False)
 filtered = filter(lambda t: not t.full_text.startswith('@'), tweets)

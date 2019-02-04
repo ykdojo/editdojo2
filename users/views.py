@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Language
+import django_rq
+from twitter_checker import twitter_checker
 
 # returns True if the user has already finished the signup flow.
 def finished_signup_flow(user):
@@ -15,6 +17,8 @@ def finished_signup_flow(user):
 # Hanlde the signup flow after the user is authenticated.
 def signup_flow(request):
     current_user = request.user
+    queue = django_rq.get_queue('in_twitter_queue')
+    queue.enqueue(twitter_checker) #when user authenticates, automatically look for new users and add them to twitter list.
     # The sign-up flow happens after the user is authenticated.
     # If they are not authenticated, redirect them to root.
     if not current_user.is_authenticated:
