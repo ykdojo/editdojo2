@@ -18,6 +18,7 @@ export default class Post extends React.Component {
 
   afterOpenModal() {
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'relative';
   }
 
   openModal() {
@@ -26,7 +27,7 @@ export default class Post extends React.Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'inherit';
   }
 
   render() {
