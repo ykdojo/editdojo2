@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Post from './post'
 import Cookies from 'js-cookie'
 
 function formatDate(dateString) {
@@ -25,38 +26,6 @@ function formatDate(dateString) {
   }
 
   return 'just posted';
-}
-
-class Post extends React.Component {
-  render() {
-    const post = this.props.data;
-    const date = formatDate(post.date_posted);
-    const profileLink = "https://twitter.com/intent/user?user_id=" + post.associated_social_account.uid;
-    const user = post.posted_by;
-    const learning = user.learning_languages;
-    const fluent = user.fluent_languages;
-    const learningString = learning.map(l => l.short_representation).join(', ')
-    const fluentString = fluent.map(l => l.short_representation).join(', ')
-
-    return (
-        <div className="section" style={{padding: '5px 0', fontSize: '14px'}}>
-          <div className='card-body' style={{padding: '15px 10px', paddingBottom: '0px'}}>
-            <div style={{fontSize: '15px', marginBottom: '10px', lineHeight: '20px'}}>
-              <a href={profileLink} target="_blank" className="ed-username">@{user.username}</a>
-              <span style={{marginLeft: '2px', fontSize: '80%'}}> ({fluentString} → {learningString})</span>
-            </div>
-            <div style={{lineHeight: '21px'}}>{post.text_content}</div>
-            <div style={{fontSize: '90%', color: '#333333', marginTop: '10px', textAlign: 'left'}}>{date}</div>
-            <div style={{textAlign: 'right'}}>
-              <button className="btn btn-primary btn-sm btn-link ed-edit-button"
-                style={{paddingRight: '5px', paddingLeft: '2px', marginTop: '5px'}}>
-                <i className="material-icons">edit</i> Edit
-              </button>
-            </div>
-          </div>
-        </div>
-    );
-  }
 }
 
 class Feed extends React.Component {
@@ -145,5 +114,5 @@ class Feed extends React.Component {
 const element = <Feed/>;
 ReactDOM.render(
   element,
-  window.react_mount,
+  document.getElementById('react'),
 );
