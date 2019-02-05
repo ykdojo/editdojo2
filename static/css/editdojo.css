@@ -27,3 +27,7 @@ a.ed-username {
 .btn.btn-primary.btn-link.ed-edit-button:active {
     opacity: 0.6;
 }
+
+.ReactModal__Overlay {
+    z-index: 9999;
+}

@@ -55,6 +55,7 @@
                   font-size: 1.1rem;">These tweets still need edits!</h4>
       </div>
       <div id="react"></div>
+      <div id="react-modal"></div>
     </div>
   </div>
   <footer class="footer">
@@ -75,9 +76,6 @@
   </footer>
 
   {% include "common_js.html" %}
-  <script>
-    window.react_mount = document.getElementById('react');
-  </script>
   {% render_bundle 'main' %}
 </body>
 {% endblock content %}
