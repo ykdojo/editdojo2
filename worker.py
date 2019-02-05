@@ -4,7 +4,7 @@ from rq import Worker, Queue, Connection
 
 #this is the file that spins up a worker to process redis queues.
 
-listen = ['in_twitter_queue']
+listen = ['in_twitter_queue', 'local']
 
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379') #heroku only
 

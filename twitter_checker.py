@@ -20,9 +20,7 @@ def twitter_checker():
         api.add_list_member(user_id=userid[0], slug=os.environ['TWITTER_LIST'], owner_screen_name=os.environ['OWNER_SCREEN_NAME']) #add user to twitter list
         user.already_in_twitter_list = True #Database is updated to show that the user has been added to the twitter list.
         user.save()
-
     #################################### RETRIEVE-ALL TWEETS FROM LIST ############################################
-def tweet_retriever():
     tweets_in_list = api.list_timeline(owner_screen_name='EditDojo', slug='twittermemberlist', include_rts=False, tweet_mode='Extended')
     filtered = filter(lambda t: not t.text.startswith('@'), tweets_in_list)
     tweets_without_mentions = list(filtered)

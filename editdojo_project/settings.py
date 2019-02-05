@@ -136,7 +136,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 ##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
-#todo: add a local redis queue functionality for testing
 RQ_QUEUES = {
     'local': {
         'HOST': 'localhost',
