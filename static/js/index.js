@@ -61,7 +61,6 @@ class Feed extends React.Component {
       error: (error) => {
         this.setState({error: error});
       },
-      // TODO: Handle an error here.
     })
   };
 
@@ -76,6 +75,8 @@ class Feed extends React.Component {
       );
     }
 
+    // TODO: In the following section, extract the common text
+    // into a constant.
     if (!this.state.posts instanceof Array) {
       return  (
         <div>

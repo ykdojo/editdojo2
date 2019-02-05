@@ -16,12 +16,17 @@ export default class Post extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  afterOpenModal() {
+    document.body.style.overflow = 'hidden';
+  }
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
 
   closeModal() {
     this.setState({modalIsOpen: false});
+    document.body.style.overflow = 'auto';
   }
 
   render() {
@@ -50,6 +55,7 @@ export default class Post extends React.Component {
                 <i className="material-icons">edit</i> Edit
               </button>
               <Modal
+                  onAfterOpen={this.afterOpenModal}
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
                 >
