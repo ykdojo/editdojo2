@@ -1,31 +1,29 @@
 import React from 'react'
+import Modal from 'react-modal';
+import { formatDate } from './helper';
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement(document.getElementById('react'));
 
-function formatDate(dateString) {
-  const givenDate = new Date(dateString);
-  const milliSecondsSince = Date.now() - givenDate.getTime();
-  const minutes = Math.round(milliSecondsSince / 1000 / 60);
-  const hours = Math.round(minutes / 60);
-  const days = Math.round(hours / 24);
+export default class Post extends React.Component {
+  constructor() {
+    super();
 
-  if (days > 0) {
-    const toAppend = days == 1 ? ' day ago' : ' days ago'
-    return days + toAppend;
+    this.state = {
+      modalIsOpen: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  if (hours > 0) {
-    const toAppend = hours == 1 ? ' hour ago' : ' hours ago'
-    return hours + toAppend;
+  openModal() {
+    this.setState({modalIsOpen: true});
   }
 
-  if (minutes > 0) {
-    const toAppend = minutes == 1 ? ' minute ago' : ' minutes ago'
-    return minutes + toAppend;
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
-  return 'just posted';
-}
-
-class Post extends React.Component {
   render() {
     const post = this.props.data;
     const date = formatDate(post.date_posted);
@@ -47,14 +45,20 @@ class Post extends React.Component {
             <div style={{fontSize: '90%', color: '#333333', marginTop: '10px', textAlign: 'left'}}>{date}</div>
             <div style={{textAlign: 'right'}}>
               <button className="btn btn-primary btn-sm btn-link ed-edit-button"
-                style={{paddingRight: '5px', paddingLeft: '2px', marginTop: '5px'}}>
+                      onClick={this.openModal}
+                      style={{paddingRight: '5px', paddingLeft: '2px', marginTop: '5px'}}>
                 <i className="material-icons">edit</i> Edit
               </button>
+              <Modal
+                  isOpen={this.state.modalIsOpen}
+                  onRequestClose={this.closeModal}
+                >
+                  <button onClick={this.closeModal}>close</button>
+                  <div>The edit view will come here.</div>
+              </Modal>
             </div>
           </div>
         </div>
     );
   }
 }
-
-export default Post;
