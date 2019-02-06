@@ -65,7 +65,6 @@ export default class Post extends React.Component {
                   contentRef={node => this.handleContentRef(node)}
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
-                  id={'modal' + this.props.postKey}
                   style={{
                     overlay: {},
                     content: {
