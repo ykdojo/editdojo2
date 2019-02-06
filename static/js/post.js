@@ -32,8 +32,8 @@ export default class Post extends React.Component {
   }
 
   closeModal() {
-    clearAllBodyScrollLocks();
     this.setState({modalIsOpen: false});
+    clearAllBodyScrollLocks();
   }
 
   render() {
