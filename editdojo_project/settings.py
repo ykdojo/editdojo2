@@ -99,9 +99,9 @@ try:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['POSTGRES_DB'],
-            'USER': os.environ['POSTGRES_USER'],
-            'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+            'NAME': os.environ.get('POSTGRES_DB', default='name'),
+            'USER': os.environ.get('POSTGRES_USER', default='user'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', default='test'),
             'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
             'PORT': os.environ.get('POSTGRES_PORT', default='5432')
         },
@@ -137,13 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 ##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
 RQ_QUEUES = {
-    'local': {
-        'HOST': 'localhost',
-        'PORT': 6379,
-        'DB': 0,
-        'PASSWORD': 'some-password',
-        'DEFAULT_TIMEOUT': 360,
-    },
     'in_twitter_queue': {
         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
         'DEFAULT_TIMEOUT': 500,
