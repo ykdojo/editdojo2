@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { formatDate } from './helper';
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement(document.getElementById('react'));
@@ -16,18 +16,24 @@ export default class Post extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  componentDidMount() {
-    this.targetElement = document.querySelectorAll('.ReactModalPortal')[this.props.postKey];
+  handleContentRef(node) {
+    if (node) {
+      this.targetNode = node;
+      disableBodyScroll(this.targetNode);
+    } else {
+      // We might not need this line as it's a duplicate from
+      // below, but I'm keeping it for now just in case (YK).
+      clearAllBodyScrollLocks();
+    }
   }
 
   openModal() {
     this.setState({modalIsOpen: true});
-    disableBodyScroll(this.targetElement.firstElementChild);
   }
 
   closeModal() {
+    clearAllBodyScrollLocks();
     this.setState({modalIsOpen: false});
-    enableBodyScroll(this.targetElement.firstElementChild);
   }
 
   render() {
@@ -56,10 +62,19 @@ export default class Post extends React.Component {
                 <i className="material-icons">edit</i> Edit
               </button>
               <Modal
-                  onAfterOpen={this.afterOpenModal}
+                  contentRef={node => this.handleContentRef(node)}
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
                   id={'modal' + this.props.postKey}
+                  style={{
+                    overlay: {},
+                    content: {
+                      top: '10px',
+                      left: '10px',
+                      right: '10px',
+                      bottom: '10px',
+                    }
+                  }}
                 >
                   <button onClick={this.closeModal}>close</button>
                   <div>The edit view will come here.</div>
