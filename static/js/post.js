@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { formatDate } from './helper';
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement(document.getElementById('react'));
@@ -11,23 +12,22 @@ export default class Post extends React.Component {
     this.state = {
       modalIsOpen: false
     };
-
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
-  afterOpenModal() {
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'relative';
+  componentDidMount() {
+    this.targetElement = document.querySelectorAll('.ReactModalPortal')[this.props.postKey];
   }
 
   openModal() {
     this.setState({modalIsOpen: true});
+    disableBodyScroll(this.targetElement.firstElementChild);
   }
 
   closeModal() {
     this.setState({modalIsOpen: false});
-    document.body.style.overflow = 'inherit';
+    enableBodyScroll(this.targetElement.firstElementChild);
   }
 
   render() {
@@ -59,8 +59,48 @@ export default class Post extends React.Component {
                   onAfterOpen={this.afterOpenModal}
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
+                  id={'modal' + this.props.postKey}
                 >
                   <button onClick={this.closeModal}>close</button>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
+                  <div>The edit view will come here.</div>
                   <div>The edit view will come here.</div>
               </Modal>
             </div>
