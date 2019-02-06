@@ -18,11 +18,11 @@ export default class Post extends React.Component {
 
   handleContentRef(node) {
     if (node) {
-      this.targetNode = node;
-      disableBodyScroll(this.targetNode);
+      disableBodyScroll(node);
     } else {
       // We might not need this line as it's a duplicate from
-      // below, but I'm keeping it for now just in case (YK).
+      // below, but I'm keeping it for now just to make sure
+      // we can clear the scroll lock (YK).
       clearAllBodyScrollLocks();
     }
   }
