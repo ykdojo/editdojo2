@@ -103,7 +103,7 @@ class Feed extends React.Component {
           <div key={index} className="row" style={{margin:'0 8px'}}>
             <div className="card col-lg-6 col-md-6 ml-auto mr-auto"
                   style={{marginTop: '10px', marginBottom: '10px'}}>
-              <Post key={index} postKey={index} data={post} />
+              <Post key={index} data={post} />
             </div>
           </div>
         ))}
