@@ -104,46 +104,11 @@ export default class Post extends React.Component {
                         marginRight: 'auto',
                       }}>
                       <button onClick={this.closeModal}>close</button>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
-                      <div>The edit view will come here.</div>
+                      {
+                        [...Array(40)].map(
+                          () => <div>The edit view will come here.</div>
+                        )
+                      }
                     </div>
                   </div>
               </Modal>
