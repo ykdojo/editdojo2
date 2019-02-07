@@ -18,7 +18,7 @@ export default class Post extends React.Component {
 
   handleContentRef(node) {
     if (node) {
-      disableBodyScroll(node);
+      disableBodyScroll(node.firstElementChild);
     } else {
       // We might not need this line as it's a duplicate from
       // below, but I'm keeping it for now just to make sure
@@ -66,56 +66,77 @@ export default class Post extends React.Component {
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
                   style={{
-                    overlay: {},
+                    overlay: {
+                      display: 'table',
+                      height: '100%',
+                      position: 'absolute',
+                      overflow: 'hidden',
+                      width: '100%',
+                    },
                     content: {
-                      top: '10px',
-                      left: '10px',
-                      right: '10px',
-                      bottom: '10px',
+                      padding: '10px',
+                      display: 'table-cell',
+                      verticalAlign: 'middle',
+                      position: 'static',
+                      border: 'none',
+                      background: 'none',
                     }
                   }}
                 >
-                  <button onClick={this.closeModal}>close</button>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
+                  <div
+                    style={{
+                      maxHeight: '100%',
+                      maxWidth: '600px',
+                      padding: '20px',
+                      overflow: 'auto',
+                      border: '1px solid rgb(204, 204, 204)',
+                      background: 'rgb(255, 255, 255)',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}
+                  >
+                    <button onClick={this.closeModal}>close</button>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                    <div>The edit view will come here.</div>
+                  </div>
               </Modal>
             </div>
           </div>
