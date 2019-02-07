@@ -18,7 +18,7 @@ export default class Post extends React.Component {
 
   handleContentRef(node) {
     if (node) {
-      disableBodyScroll(node);
+      disableBodyScroll(node.firstElementChild.firstElementChild);
     } else {
       // We might not need this line as it's a duplicate from
       // below, but I'm keeping it for now just to make sure
@@ -68,54 +68,49 @@ export default class Post extends React.Component {
                   style={{
                     overlay: {},
                     content: {
-                      top: '10px',
-                      left: '10px',
-                      right: '10px',
-                      bottom: '10px',
+                      display: 'table',
+                      height: '100%',
+                      overflow: 'hidden',
+                      width: '100%',
+                      border: 'none',
+                      background: 'none',
+                      padding: 0,
+                      top: 0,
+                      right: 0,
+                      left: 0,
+                      bottom: 0,
                     }
                   }}
                 >
-                  <button onClick={this.closeModal}>close</button>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
-                  <div>The edit view will come here.</div>
+                  <div
+                    style={{
+                      padding: '10px',
+                      display: 'table-cell',
+                      verticalAlign: 'middle',
+                      position: 'static',
+                      border: 'none',
+                      background: 'none',
+                    }}
+                  >
+                    <div
+                      style={{
+                        maxHeight: '100%',
+                        maxWidth: '600px',
+                        padding: '20px',
+                        overflow: 'auto',
+                        border: '1px solid rgb(204, 204, 204)',
+                        background: 'rgb(255, 255, 255)',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                      }}>
+                      <button onClick={this.closeModal}>close</button>
+                      {
+                        [...Array(40)].map(
+                          () => <div>The edit view will come here.</div>
+                        )
+                      }
+                    </div>
+                  </div>
               </Modal>
             </div>
           </div>
