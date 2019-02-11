@@ -84,7 +84,15 @@ python manage.py runserver
 
 7. Start the application opening the link shown in your terminal on a browser.
 
-8. (Optional) If you do any sort of React development, run the following command:
+8. To run tests, run the following (in your pipenv environment):
+
+```
+python manage.py test
+```
+
+If it doesn't work right away, you might want to check out [this StackOverflow thread](https://stackoverflow.com/questions/14186055/django-test-app-error-got-an-error-creating-the-test-database-permission-deni).
+
+9. (Optional) If you do any sort of React development, run the following command:
 
 ```
 npm run watch
