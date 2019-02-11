@@ -5,9 +5,7 @@
 # An example of the current implementation:
 # 
 # Suppose that:
-# given_text = 'Are you looking to learn React at some point?\n\nAccording to @ilyas_assainov, you should master these concepts before learning it:\n- HTML and CSS concepts\n- Basic programming concepts\n- JavaScript DOM manipulation\n- ES6+ syntax\n\nMore about it here:\nhttps://t.co/VhiwdvWYDT'
-#
-# Then, print(given_text) would print the following.
+# given_text =
 """Are you looking to learn React at some point?
 
 According to @ilyas_assainov, you should master these concepts before learning it:
@@ -18,7 +16,8 @@ According to @ilyas_assainov, you should master these concepts before learning i
 
 More about it here:
 https://t.co/VhiwdvWYDT"""
-# split_text_into_sentences(given_text) should return:
+
+# Then, split_text_into_sentences(given_text) should return:
 # [
 #   'Are you looking to learn React at some point?',
 #   'According to @ilyas_assainov, you should master these concepts before learning it:',
@@ -34,4 +33,7 @@ https://t.co/VhiwdvWYDT"""
 
 
 def split_text_into_sentences(text):
-    pass
+    split = text.splitlines()
+    stripped = list(map(lambda x: x.strip(), split))
+    filtered = list(filter(lambda x: len(x) > 0, stripped))
+    return filtered
