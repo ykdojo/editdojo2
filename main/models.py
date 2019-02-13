@@ -70,9 +70,15 @@ class SocialAccountSerializer(serializers.ModelSerializer):
         model = SocialAccount
         fields = ('uid',)
 
+class SentenceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sentence
+        fields = ('sentence_index', 'text_content')
+
 class PostSerializer(serializers.ModelSerializer):
     posted_by = UserSerializer()
     associated_social_account = SocialAccountSerializer()
+    sentence_set = SentenceSerializer(many=True)
     class Meta:
         model = Post
-        fields = ('text_content', 'posted_by', 'date_posted', 'associated_social_account')
+        fields = ('text_content', 'posted_by', 'date_posted', 'associated_social_account', 'sentence_set')

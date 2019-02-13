@@ -105,8 +105,13 @@ export default class Post extends React.Component {
                       }}>
                       <button onClick={this.closeModal}>close</button>
                       {
-                        [...Array(40)].map(
-                          () => <div>The edit view will come here.</div>
+                        post.sentence_set.map(
+                          (sentence) => (
+                            <div key={sentence.sentence_index}>
+                              <div>{sentence.text_content}</div>
+                              <div style={{margin: '5px'}}></div>
+                            </div>
+                          )
                         )
                       }
                     </div>
