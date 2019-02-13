@@ -36,6 +36,14 @@ class Post(models.Model):
     def __str__(self):
         return self.posted_by.username + ' - ' + self.text_content
 
+class Sentence(models.Model):
+    class Meta:
+        ordering = ['sentence_index']
+    
+    sentence_index = models.IntegerField()
+    text_content = models.TextField()
+    parent_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language

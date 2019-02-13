@@ -9,6 +9,7 @@ import tweepy
 import os
 from users.models import CustomUser
 from main.models import Post
+from main.helper import split_text_into_sentences
 from allauth.socialaccount.models import SocialAccount
 
 CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
@@ -36,3 +37,12 @@ for tweet in tweets_without_mentions:
         date_posted = tweet.created_at
     )
     new_post.save()
+
+    sentences = split_text_into_sentences(new_post.text_content)
+    for i in range(len(sentences)):
+        new_sentence = Sentence(
+            sentence_index = i
+            text_content = sentences[i]
+            parent_post = new_post
+        )
+        new_sentence.save()
