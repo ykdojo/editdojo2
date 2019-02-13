@@ -36,6 +36,23 @@ class Post(models.Model):
     def __str__(self):
         return self.posted_by.username + ' - ' + self.text_content
 
+class Sentence(models.Model):
+    class Meta:
+        ordering = ['parent_post', 'sentence_index']
+    
+    sentence_index = models.IntegerField()
+    text_content = models.TextField()
+    parent_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return (str(self.parent_post.pk)
+                + ' - '
+                + str(self.sentence_index)
+                + ' - '
+                + self.text_content)
+
+
+
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
@@ -53,9 +70,15 @@ class SocialAccountSerializer(serializers.ModelSerializer):
         model = SocialAccount
         fields = ('uid',)
 
+class SentenceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sentence
+        fields = ('sentence_index', 'text_content')
+
 class PostSerializer(serializers.ModelSerializer):
     posted_by = UserSerializer()
     associated_social_account = SocialAccountSerializer()
+    sentence_set = SentenceSerializer(many=True)
     class Meta:
         model = Post
-        fields = ('text_content', 'posted_by', 'date_posted', 'associated_social_account')
+        fields = ('text_content', 'posted_by', 'date_posted', 'associated_social_account', 'sentence_set')
