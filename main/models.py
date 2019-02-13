@@ -38,11 +38,20 @@ class Post(models.Model):
 
 class Sentence(models.Model):
     class Meta:
-        ordering = ['sentence_index']
+        ordering = ['parent_post', 'sentence_index']
     
     sentence_index = models.IntegerField()
     text_content = models.TextField()
     parent_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return (str(self.parent_post.pk)
+                + ' - '
+                + str(self.sentence_index)
+                + ' - '
+                + self.text_content)
+
+
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,6 +1,7 @@
 # This is a one-time script for creating post samples
 # using real tweets.
-# You can run this file with: python manage.py shell < create_post_samples.py
+# You can run this file with:
+#   python manage.py shell < create_post_samples.py
 # Or, on Heroku:
 #   heroku run python manage.py shell
 # and then:
@@ -8,7 +9,7 @@
 import tweepy
 import os
 from users.models import CustomUser
-from main.models import Post
+from main.models import Post, Sentence
 from main.helper import split_text_into_sentences
 from allauth.socialaccount.models import SocialAccount
 
@@ -41,8 +42,8 @@ for tweet in tweets_without_mentions:
     sentences = split_text_into_sentences(new_post.text_content)
     for i in range(len(sentences)):
         new_sentence = Sentence(
-            sentence_index = i
-            text_content = sentences[i]
+            sentence_index = i,
+            text_content = sentences[i],
             parent_post = new_post
         )
         new_sentence.save()
