@@ -16,7 +16,6 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -38,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'django.core.management.base',
     'django_rq',
+    'rq',
+    'redis',
 
     'django.contrib.sites',
     'allauth',
@@ -136,12 +138,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 ##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
-RQ_QUEUES = {
-    'in_twitter_queue': {
-        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
-        'DEFAULT_TIMEOUT': 500,
+try:
+    RQ_QUEUES = {
+        'default': {
+            'HOST': 'localhost',
+            'PORT': 6379,
+            'DB': 0,
+            'DEFAULT_TIMEOUT': 360,
+        }
     }
-}
+except:
+    RQ_QUEUES = {
+        'in_twitter_queue': {
+                'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
+                'DEFAULT_TIMEOUT': 500
+        }
+    }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
