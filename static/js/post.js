@@ -92,6 +92,16 @@ export default class Post extends React.Component {
                       background: 'none',
                     }}
                   >
+                    <div style={{marginLeft: 'auto',
+                                 marginRight: 'auto',
+                                 height:'0px',
+                                 position: 'relative',
+                                 maxWidth: '600px'}}>
+                      <button onClick={this.closeModal}
+                        style={{position: 'absolute', right: '-10px', top: '-10px'}}>
+                        close
+                      </button>
+                    </div>
                     <div
                       style={{
                         maxHeight: '100%',
@@ -103,7 +113,6 @@ export default class Post extends React.Component {
                         marginLeft: 'auto',
                         marginRight: 'auto',
                       }}>
-                      <button onClick={this.closeModal}>close</button>
                       {
                         post.sentence_set.map(
                           (sentence) => (
