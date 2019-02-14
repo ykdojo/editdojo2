@@ -108,8 +108,10 @@ export default class Post extends React.Component {
                         post.sentence_set.map(
                           (sentence) => (
                             <div key={sentence.sentence_index}>
-                              <div>{sentence.text_content}</div>
-                              <div style={{margin: '5px'}}></div>
+                              <div style={{fontWeight: 'normal'}}>
+                                {sentence.text_content}
+                              </div>
+                              <hr></hr>
                             </div>
                           )
                         )
