@@ -122,6 +122,7 @@ export default class Post extends React.Component {
                                       width: '24px',
                                       minWidth: '24px',
                                       height: '24px',
+                                      zIndex: '999999',
                                     }}
                       >
                         <i className="material-icons" style={{lineHeight: '25px', fontSize: '16px'}}>close</i>
