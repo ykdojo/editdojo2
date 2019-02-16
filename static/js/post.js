@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from 'react-modal';
-import ReactDOM from 'react-dom';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { formatDate } from './helper';
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
