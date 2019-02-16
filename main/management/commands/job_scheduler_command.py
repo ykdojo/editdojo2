@@ -79,6 +79,8 @@ class Command(BaseCommand):
                 queue.enqueue(self.twitter_checker())
         else:
             print("This process is running locally")
-            q = Queue(connection=Redis())
-            q.enqueue(self.twitter_checker())
+            queue = django_rq.get_queue('default')
+            queue.enqueue(self.twitter_checker())
+            #q = Queue(connection=Redis())
+            #qenqueue(self.twitter_checker())
 
