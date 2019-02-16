@@ -140,6 +140,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ##Django_rq's django + redis queue configuration. See: https://github.com/rq/django-rq
 try:
     RQ_QUEUES = {
+        'in_twitter_queue': {
+            'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'),  # If you're on Heroku
+            'DEFAULT_TIMEOUT': 500
+        }
+    }
+except:
+    RQ_QUEUES = {
         'default': {
             'HOST': 'localhost',
             'PORT': 6379,
@@ -147,13 +154,11 @@ try:
             'DEFAULT_TIMEOUT': 360,
         }
     }
-except:
-    RQ_QUEUES = {
-        'in_twitter_queue': {
-                'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
-                'DEFAULT_TIMEOUT': 500
-        }
-    }
+
+
+
+
+
 
 
 # Internationalization
