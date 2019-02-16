@@ -97,9 +97,18 @@ export default class Post extends React.Component {
                                  height:'0px',
                                  position: 'relative',
                                  maxWidth: '600px'}}>
-                      <button onClick={this.closeModal}
-                        style={{position: 'absolute', right: '-10px', top: '-10px'}}>
-                        close
+                      <button className='btn btn-fab btn-round'
+                              onClick={this.closeModal}
+                              style={{
+                                      position: 'absolute',
+                                      right: '-10px',
+                                      top: '-10px',
+                                      width: '24px',
+                                      minWidth: '24px',
+                                      height: '24px',
+                                    }}
+                      >
+                        <i className="material-icons" style={{lineHeight: '25px', fontSize: '16px'}}>close</i>
                       </button>
                     </div>
                     <div
