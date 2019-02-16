@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal';
+import ReactDOM from 'react-dom';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { formatDate } from './helper';
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
@@ -12,17 +13,30 @@ export default class Post extends React.Component {
     this.state = {
       modalIsOpen: false
     };
+    this.scrollBody = null;
+    this.modalNode = null;
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
+  handleClickOutside(event) {
+    if (this.scrollBody && !this.scrollBody.contains(event.target)) {
+        this.closeModal();
+    }
+  }
+  
   handleContentRef(node) {
     if (node) {
-      disableBodyScroll(node.firstElementChild.firstElementChild);
+      this.scrollBody = node.firstElementChild.children[1];
+      disableBodyScroll(this.scrollBody);
+      this.modalNode = node;
+      this.modalNode.addEventListener('click', this.handleClickOutside, true);
     } else {
-      // We might not need this line as it's a duplicate from
+      // We might not need this block as it's a duplicate from
       // below, but I'm keeping it for now just to make sure
       // we can clear the scroll lock (YK).
+      this.scrollBody = null;
       clearAllBodyScrollLocks();
     }
   }
@@ -32,6 +46,9 @@ export default class Post extends React.Component {
   }
 
   closeModal() {
+    this.modalNode.removeEventListener('click', this.handleClickOutside, true);
+    this.modalNode = null;
+    this.scrollBody = null;
     this.setState({modalIsOpen: false});
     clearAllBodyScrollLocks();
   }
