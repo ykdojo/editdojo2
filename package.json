@@ -33,6 +33,7 @@
     "js-cookie": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-modal": "^3.8.1"
+    "react-modal": "^3.8.1",
+    "spin.js": "^4.0.0"
   }
 }

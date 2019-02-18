@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Post from './post'
+import {Spinner} from 'spin.js'
+import {spinnerOpts} from './helper';
 import Cookies from 'js-cookie'
 
 class Feed extends React.Component {
@@ -9,10 +11,21 @@ class Feed extends React.Component {
     this.state = {
       posts: null, // all the posts that should currently be shown
       error: null, // the error message that will be shown on the UI
+      spinner: null, // the spinner object will be stored here
     };
   }
 
   componentDidMount() {
+    // If there is a spinner div, then load a spinner.
+    const spinnerDOM = document.getElementById('spinner');
+    if (spinnerDOM) {
+      this.state.spinner =  new Spinner(spinnerOpts).spin(spinnerDOM);
+    } else {
+      if (this.state.spinner) {
+        this.state.spinner.stop();
+      }
+    }
+
     // Set up the csrftoken here.
     // More info about it here: https://docs.djangoproject.com/en/2.1/ref/csrf/#setting-the-token-on-the-ajax-request
     function csrfSafeMethod(method) {
@@ -46,9 +59,8 @@ class Feed extends React.Component {
     // If the posts haven't been loaded yet, show a spinning icon.
     if (this.state.posts === null) {
       return (
-        // TODO: Change this to a spinning icon
-        <div>
-          <div>loading posts...</div>
+        <div className="row" style={{margin: '8px', textAlign: 'center', display: 'block'}}>
+          <div id="spinner" style={{height: '80px'}}></div>
           <div>{this.state.error}</div>
         </div>
       );
@@ -57,7 +69,7 @@ class Feed extends React.Component {
     const contactInfo = <span>Please tweet at us <a href="https://twitter.com/EditDojo" target="_blank">@EditDojo</a> to let us know that you got this message so we can look into what's going on.</span>;
     // If the retrieved posts is not an array, then show an error.
     if (!this.state.posts instanceof Array) {
-      return  (
+      return (
         <div className="row">
             <div className="card col-lg-6 col-md-6 ml-auto mr-auto"
                  style={{padding: '20px 30px'}}>
