@@ -154,7 +154,7 @@ export default class Post extends React.Component {
                                 <div>
                                   {sentence.text_content}
                                 </div>
-                                <div style={{paddingLeft: '10px'}}>
+                                <div style={{paddingLeft: '10px', height: '24px'}}>
                                   <i className="material-icons" style={{color: "#9c27b0"}}>edit</i>
                                 </div>
                               </div>
