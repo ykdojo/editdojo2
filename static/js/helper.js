@@ -1,3 +1,7 @@
+// This function converts a date string into a format
+// that should be shown on the UI.
+// Currently, the output should be something like:
+// '2 days ago', '1 hour ago', '3 minutes ago', or 'just posted'.
 export function formatDate(dateString) {
   const givenDate = new Date(dateString);
   const milliSecondsSince = Date.now() - givenDate.getTime();
