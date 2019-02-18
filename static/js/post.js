@@ -133,6 +133,7 @@ export default class Post extends React.Component {
                         maxHeight: '100%',
                         maxWidth: '600px',
                         padding: '20px',
+                        paddingRight: '15px',
                         overflow: 'auto',
                         border: '1px solid rgb(204, 204, 204)',
                         background: 'rgb(255, 255, 255)',
@@ -143,8 +144,19 @@ export default class Post extends React.Component {
                         post.sentence_set.map(
                           (sentence) => (
                             <div key={sentence.sentence_index}>
-                              <div style={{fontWeight: 'normal'}}>
-                                {sentence.text_content}
+                              <div style={{
+                                fontWeight: 'normal',
+                                display: 'flex',
+                                flexWrap: 'nowrap',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                              }}>
+                                <div>
+                                  {sentence.text_content}
+                                </div>
+                                <div style={{paddingLeft: '10px'}}>
+                                  <i className="material-icons" style={{color: "#9c27b0"}}>edit</i>
+                                </div>
                               </div>
                               <hr></hr>
                             </div>
