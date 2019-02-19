@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-modal';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { formatDate } from './helper';
+
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement(document.getElementById('react'));
 
@@ -10,21 +11,26 @@ export default class Post extends React.Component {
     super();
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false // the modal for editing a post
     };
-    this.scrollBody = null;
-    this.modalNode = null;
+    this.scrollBody = null; // the portion of the modal that's going to be scrolled
+    this.modalNode = null; // the DOM for the modal
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    
+    // handle click outside the modal (so we can close it)
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   handleClickOutside(event) {
+    // If the scrollBody exists AND the scrollBody doesn't contain the clicked element,
+    // then the clicked element is outside the scrollBody.
     if (this.scrollBody && !this.scrollBody.contains(event.target)) {
         this.closeModal();
     }
   }
   
+  // This function is run when the modal is mounted.
   handleContentRef(node) {
     if (node) {
       this.scrollBody = node.firstElementChild.children[1];
@@ -54,7 +60,7 @@ export default class Post extends React.Component {
 
   render() {
     const post = this.props.data;
-    const date = formatDate(post.date_posted);
+    const dateString = formatDate(post.date_posted); // example: '6 days ago'
     const profileLink = "https://twitter.com/intent/user?user_id=" + post.associated_social_account.uid;
     const user = post.posted_by;
     const learning = user.learning_languages;
@@ -65,12 +71,17 @@ export default class Post extends React.Component {
     return (
         <div className="section" style={{padding: '5px 0', fontSize: '14px'}}>
           <div className='card-body' style={{padding: '15px 10px', paddingBottom: '0px'}}>
+            {/* The div for user info */}
             <div style={{fontSize: '15px', marginBottom: '10px', lineHeight: '20px'}}>
               <a href={profileLink} target="_blank" className="ed-username">@{user.username}</a>
               <span style={{marginLeft: '2px', fontSize: '80%'}}> ({fluentString} → {learningString})</span>
             </div>
+
+            {/* The divs for the main content and the date string */}
             <div style={{lineHeight: '21px'}}>{post.text_content}</div>
-            <div style={{fontSize: '90%', color: '#333333', marginTop: '10px', textAlign: 'left'}}>{date}</div>
+            <div style={{fontSize: '90%', color: '#333333', marginTop: '10px', textAlign: 'left'}}>{dateString}</div>
+
+            {/* The div for the edit button */}
             <div style={{textAlign: 'right'}}>
               <button className="btn btn-primary btn-sm btn-link ed-edit-button"
                       onClick={this.openModal}
@@ -78,12 +89,13 @@ export default class Post extends React.Component {
                 <i className="material-icons">edit</i> Edit
               </button>
               <Modal
+                  // contentRef is run when the modal is loaded.
                   contentRef={node => this.handleContentRef(node)}
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
                   style={{
-                    overlay: {},
                     content: {
+                      // Need to use table here for vertical centering
                       display: 'table',
                       height: '100%',
                       overflow: 'hidden',
@@ -101,6 +113,7 @@ export default class Post extends React.Component {
                   <div
                     style={{
                       padding: '10px',
+                      // Need to use table-cell here for vertical centering
                       display: 'table-cell',
                       verticalAlign: 'middle',
                       position: 'static',
@@ -108,6 +121,7 @@ export default class Post extends React.Component {
                       background: 'none',
                     }}
                   >
+                    {/* The div for the close button */}
                     <div style={{marginLeft: 'auto',
                                  marginRight: 'auto',
                                  height:'0px',
@@ -127,7 +141,8 @@ export default class Post extends React.Component {
                       >
                         <i className="material-icons" style={{lineHeight: '25px', fontSize: '16px'}}>close</i>
                       </button>
-                    </div>
+                    </div> {/* END the div for the close button */}
+                    {/* The div for the main editing view */}
                     <div
                       style={{
                         maxHeight: '100%',
