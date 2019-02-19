@@ -27,6 +27,7 @@ export default function CustomModal(props) { return (
         }
       }}
     >
+      {/* The actual content div */}
       <div
         style={{
           padding: '10px',
