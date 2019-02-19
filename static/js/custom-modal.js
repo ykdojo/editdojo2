@@ -76,8 +76,7 @@ export default function CustomModal(props) { return (
             marginRight: 'auto',
           }}
         >
-          {props.post.sentence_set.map(
-            (sentence) => (
+          {props.post.sentence_set.map((sentence) => (
               <div key={sentence.sentence_index}>
                 <div style={{
                   fontWeight: 'normal',
@@ -95,8 +94,7 @@ export default function CustomModal(props) { return (
                 </div>
                 <hr></hr>
               </div>
-            )
-          )}
+          ))}
         </div> {/* END the div for the main editing view */}
       </div> {/* END the actual content div */}
   </Modal>
