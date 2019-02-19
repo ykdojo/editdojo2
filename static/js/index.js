@@ -43,7 +43,7 @@ class Feed extends React.Component {
 
     // Get the main feed from /ajax/getSerializedFeed/
     // (only if the posts haven't loaded yet).
-    if (this.state.posts){ return; }
+    if (this.state.posts !== null){ return; }
     $.ajax({
       method: "GET",
       url: '/ajax/getSerializedFeed/',
