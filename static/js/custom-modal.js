@@ -75,30 +75,28 @@ export default function CustomModal(props) { return (
             marginRight: 'auto',
           }}
         >
-          {
-            props.post.sentence_set.map(
-              (sentence) => (
-                <div key={sentence.sentence_index}>
-                  <div style={{
-                    fontWeight: 'normal',
-                    display: 'flex',
-                    flexWrap: 'nowrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
-                    <div>
-                      {sentence.text_content}
-                    </div>
-                    <div style={{paddingLeft: '10px', height: '24px'}}>
-                      <i className="material-icons" style={{color: "#9c27b0"}}>edit</i>
-                    </div>
+          {props.post.sentence_set.map(
+            (sentence) => (
+              <div key={sentence.sentence_index}>
+                <div style={{
+                  fontWeight: 'normal',
+                  display: 'flex',
+                  flexWrap: 'nowrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                  <div>
+                    {sentence.text_content}
                   </div>
-                  <hr></hr>
+                  <div style={{paddingLeft: '10px', height: '24px'}}>
+                    <i className="material-icons" style={{color: "#9c27b0"}}>edit</i>
+                  </div>
                 </div>
-              )
+                <hr></hr>
+              </div>
             )
-          }
-        </div>
-      </div>
+          )}
+        </div> {/* END the div for the main editing view */}
+      </div> {/* END the actual content div */}
   </Modal>
 ); }
