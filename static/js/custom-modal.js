@@ -41,10 +41,10 @@ export default function CustomModal(props) { return (
       >
         {/* The div for the close button */}
         <div style={{marginLeft: 'auto',
-                      marginRight: 'auto',
-                      height:'0px',
-                      position: 'relative',
-                      maxWidth: '600px'}}>
+                     marginRight: 'auto',
+                     height:'0px',
+                     position: 'relative',
+                     maxWidth: '600px'}}>
           <button className='btn btn-fab btn-round'
                   onClick={props.closeModal}
                   style={{
