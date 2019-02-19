@@ -88,6 +88,7 @@ export default class Post extends React.Component {
                       style={{paddingRight: '5px', paddingLeft: '2px', marginTop: '5px'}}>
                 <i className="material-icons">edit</i> Edit
               </button>
+              {/* The modal for editing the post */}
               <CustomModal
                 handleContentRef={this.handleContentRef}
                 closeModal={this.closeModal}
