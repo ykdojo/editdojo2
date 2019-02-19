@@ -54,7 +54,7 @@ class Feed extends React.Component {
       error: (error) => {
         this.setState({error: error});
       },
-    })
+    });
   };
 
   render() {
