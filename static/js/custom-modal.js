@@ -57,7 +57,8 @@ export default function CustomModal(props) { return (
                           zIndex: '999999',
                         }}
           >
-            <i className="material-icons" style={{lineHeight: '25px', fontSize: '16px'}}>close</i>
+            <i className="material-icons"
+               style={{lineHeight: '25px', fontSize: '16px'}}>close</i>
           </button>
         </div> {/* END the div for the close button */}
 
