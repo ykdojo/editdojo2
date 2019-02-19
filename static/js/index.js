@@ -97,6 +97,7 @@ class Feed extends React.Component {
       )
     }
 
+    // Otherwise, show the posts.
     return (
       <div style={{whiteSpace: 'pre-line'}}>
         {this.state.posts.map((post, index) => (
