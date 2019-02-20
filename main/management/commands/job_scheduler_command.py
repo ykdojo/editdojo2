@@ -18,8 +18,8 @@ class Command(BaseCommand):
     help = 'Displays current time'
 
     def add_arguments(self, parser):
-        parser.add_argument('local', type=bool, default=True, help='whether to run locally or not')
-        parser.add_argument('schedule', type=bool, default=False, help='whether to schedule or not. Default False')
+        parser.add_argument('--local', dest='local', required=True,  help='whether to run locally or not')
+        parser.add_argument('--schedule', dest='schedule',  required=True, help='whether to schedule or not. Default False')
 
     def twitter_checker(self):
         print("twitter checker started")
@@ -46,26 +46,25 @@ class Command(BaseCommand):
         for tweet in tweets_without_mentions:
             twitter_account = SocialAccount.objects.get(
                 uid=tweet['user']['id_str'])  # find the socialaccount related to the person to tweeted
-            if twitter_account and len(Post.objects.filter(tweet_id_str=tweet['id_str'])) > 0:  # if twitter account returns a record and tweet does not exist already
-                new_post = Post(
-                    text_content=tweet['text'],
-                    source='twitter',  # TODO: move this constant into a separate file
-                    associated_social_account=twitter_account,
-                    tweet_id_str=tweet['id_str'],
-                    posted_by=CustomUser.objects.get(username=tweet['user']['screen_name']),
-                    date_posted=datetime.datetime.strptime(tweet['created_at'], '%a %b %d %H:%M:%S %z %Y')
-                )
-                new_post.save()
-                return ("Job executed successfully")
+            if twitter_account and len(Post.objects.filter(tweet_id_str=tweet['id_str'])) > 0: # if twitter account returns a record and tweet does not exist already
+                if (tweet['id_str'],) not in list(Post.objects.values_list('tweet_id_str')):
+                    new_post = Post(
+                        text_content=tweet['text'],
+                        source='twitter',  # TODO: move this constant into a separate file
+                        associated_social_account=twitter_account,
+                        tweet_id_str=tweet['id_str'],
+                        posted_by=CustomUser.objects.get(username=tweet['user']['screen_name']),
+                        date_posted=datetime.datetime.strptime(tweet['created_at'], '%a %b %d %H:%M:%S %z %Y')
+                    )
+                    new_post.save()
+        return ('Job completed successfully')
 
     def handle(self, *args, **kwargs):
         local = kwargs['local']
         schedule = kwargs['schedule']
-
-
-
-        if local == False:
-            if schedule == True:
+        if local == 'False':
+            print('this process is running on the server')
+            if schedule == 'True':
                 scheduler = django_rq.get_scheduler('in_twitter_queue')
                 print('scheduler has started')
                 job = scheduler.cron(
@@ -75,7 +74,9 @@ class Command(BaseCommand):
                 )
 
             else:
+                print('running one off job')
                 queue = django_rq.get_queue('in_twitter_queue')
+
                 queue.enqueue(self.twitter_checker())
         else:
             print("This process is running locally")
