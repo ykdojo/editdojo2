@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Language
 import django_rq
-from twitter_checker import twitter_checker
+from main.management.commands.job_scheduler_command import twitter_checker
 
 # returns True if the user has already finished the signup flow.
 def finished_signup_flow(user):

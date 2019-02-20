@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django_rq',
     'rq',
     'redis',
-
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -141,17 +140,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 RQ_QUEUES = {
-    'default': {
+    'in_twitter_queue': {
          'HOST': 'localhost',
          'PORT': '6379',
-         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'),  # If you're
+         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'), #heroku setup
          'DB': 0,
          'DEFAULT_TIMEOUT': 480,
      }
 }
-
-
-
 
 
 
