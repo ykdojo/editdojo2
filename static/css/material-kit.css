@@ -254,8 +254,8 @@ button:focus {
 input,
 button,
 select,
-optgroup,
-textarea {
+optgroup {
+/* textarea { */
   margin: 0;
   font-family: inherit;
   font-size: inherit;
@@ -300,10 +300,10 @@ input[type="month"] {
   -webkit-appearance: listbox;
 }
 
-textarea {
+/* textarea {
   overflow: auto;
   resize: vertical;
-}
+} */
 
 fieldset {
   min-width: 0;
@@ -658,8 +658,8 @@ button:focus {
 input,
 button,
 select,
-optgroup,
-textarea {
+optgroup {
+/* textarea { */
   margin: 0;
   font-family: inherit;
   font-size: inherit;
@@ -704,10 +704,10 @@ input[type="month"] {
   -webkit-appearance: listbox;
 }
 
-textarea {
+/* textarea {
   overflow: auto;
   resize: vertical;
-}
+} */
 
 fieldset {
   min-width: 0;
@@ -13797,11 +13797,11 @@ select.form-control {
   position: relative;
 }
 
-textarea {
+/* textarea {
   height: auto !important;
   resize: none;
   line-height: 1.428571 !important;
-}
+} */
 
 .form-group input[type=file] {
   opacity: 0;
