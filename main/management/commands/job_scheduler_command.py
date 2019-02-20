@@ -1,11 +1,6 @@
-import os
 from django.core.management.base import BaseCommand
-from rq import Queue
 import django_rq
-from redis import Redis
 import datetime
-
-
 from users.models import CustomUser
 from allauth.socialaccount.models import SocialAccount
 import tweepy
@@ -39,9 +34,8 @@ def twitter_checker():
     for tweet in tweets_without_mentions:
         twitter_account = SocialAccount.objects.get(
             uid=tweet['user']['id_str'])  # find the socialaccount related to the person to tweeted
-        if twitter_account and len(Post.objects.filter(tweet_id_str=tweet[
-            'id_str'])) > 0:  # if twitter account returns a record and tweet does not exist already
-            if (tweet['id_str'],) not in list(Post.objects.values_list('tweet_id_str')): #if tweet id exists already, don't add
+        if twitter_account and len(Post.objects.filter(tweet_id_str=tweet['id_str'])) > 0:  # if twitter account returns a record and tweet does not exist already
+            if (tweet['id_str'],) not in list(Post.objects.values_list('tweet_id_str')): #if tweet id exists already, don't add.. note tweet needs to be tupled
                 new_post = Post(
                     text_content=tweet['text'],
                     source='twitter',  # TODO: move this constant into a separate file
@@ -53,6 +47,8 @@ def twitter_checker():
                 new_post.save()
     return ('Job completed successfully')
 
+#See https://simpleisbetterthancomplex.com/tutorial/2018/08/27/how-to-create-custom-django-management-commands.html
+#for more details.
 class Command(BaseCommand):
     help = 'python manage.py job_scheduler_command --local True/False --schedule True/False'
 
