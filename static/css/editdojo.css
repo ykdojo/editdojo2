@@ -31,7 +31,3 @@ a.ed-username {
 .ReactModal__Overlay {
     z-index: 9999;
 }
-
-label.ed-textarea-label {
-    line-height: 1.8;
-}

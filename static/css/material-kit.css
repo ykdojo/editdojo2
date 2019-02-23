@@ -10964,7 +10964,7 @@ a .material-icons {
 }
 
 .form-check,
-label {
+label:not(.ed-materialize) {
   font-size: 14px;
   line-height: 1.42857;
   color: #AAAAAA;
@@ -13680,7 +13680,7 @@ fieldset[disabled][disabled] .has-rose .form-control,
 }
 
 .form-control,
-label,
+label:not(.ed-materialize),
 input::placeholder {
   line-height: 1.1;
 }
