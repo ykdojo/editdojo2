@@ -15,6 +15,8 @@ export default class Post extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
+    this.bodyScrollTop = 0; // this will be used in case a target iOS 11 version is detected (more info below)
+
     // handle the event that occurs when the modal is loaded
     this.handleContentRef = this.handleContentRef.bind(this);
     
@@ -46,11 +48,36 @@ export default class Post extends React.Component {
     }
   }
 
+  // Returns true if the user's device is iOS11.
+  // This was inspired by: https://stackoverflow.com/questions/46339063/ios-11-safari-bootstrap-modal-text-area-outside-of-cursor
+  isIOS11(){
+    // Detect ios 11_x_x affected.
+    // This will need to be updated if new versions are affected.
+    const ua = navigator.userAgent;
+    const iOS = /iPad|iPhone|iPod/.test(ua);
+    const iOS11 = /OS 11_0|OS 11_1|OS 11_2/.test(ua);
+    // If an appropriate iOS version is detected,
+    // apply this bug fix.
+    if ( iOS && iOS11 ) {
+      return true;
+    }
+    return false;
+  }
+
   openModal() {
+    if (this.isIOS11()) {
+      this.bodyScrollTop = document.body.scrollTop;
+      $("body").addClass("iOS-bug-fix-caret");
+    }
     this.setState({modalIsOpen: true});
   }
 
   closeModal() {
+    if (this.isIOS11()) {
+      $('body').removeClass("iOS-bug-fix-caret");
+      document.body.scrollTop = this.bodyScrollTop;
+      this.bodyScrollTop = 0;
+    }
     this.modalNode.removeEventListener('click', this.handleClickOutside, true);
     this.modalNode = null;
     this.scrollBody = null;

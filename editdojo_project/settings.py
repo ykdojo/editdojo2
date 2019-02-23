@@ -25,7 +25,7 @@ SECRET_KEY = '&1h6l+9kzq2%9zmfiu=#=lj1a^t(m=a!wh5tknm)@29cx2n)dj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.102', 'agile-mesa-45958.herokuapp.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.1.124', 'agile-mesa-45958.herokuapp.com', '127.0.0.1', '0.0.0.0', 'localhost', 'editdojosecret.herokuapp.com']
 
 
 # Application definition
