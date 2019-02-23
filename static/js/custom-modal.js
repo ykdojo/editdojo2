@@ -76,6 +76,7 @@ export default function CustomModal(props) { return (
             marginRight: 'auto',
           }}
         >
+          {/* Render each sentence */}
           {props.post.sentence_set.map((sentence) => (
               <div key={sentence.sentence_index}>
                 <div style={{
@@ -94,7 +95,13 @@ export default function CustomModal(props) { return (
                 </div>
                 <hr></hr>
               </div>
-          ))}
+          ))} {/* END render each sentence */}
+          <div>
+            <div className="input-field" style={{"marginBottom": 0}}>
+              <textarea id="textarea1" className="ed-materialize materialize-textarea"></textarea>
+              <label htmlFor="textarea1" className="ed-textarea-label">Comment (optional)</label>
+            </div>
+          </div>
         </div> {/* END the div for the main editing view */}
       </div> {/* END the actual content div */}
   </Modal>

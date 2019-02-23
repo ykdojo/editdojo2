@@ -1,0 +1,18 @@
+// This is going to be Edit Dojo-flavoured materialize.css.
+// Conpile this file with the following command:
+// > sass static/sass/ed-materialize.scss static/css/ed-materialize.css
+@charset "UTF-8";
+
+// Color
+@import "components/color-variables";
+@import "components/color-classes";
+
+// Variables;
+@import "components/variables";
+
+// Reset
+@import "components/normalize";
+
+// components
+@import "components/global";
+@import "components/forms/forms";
