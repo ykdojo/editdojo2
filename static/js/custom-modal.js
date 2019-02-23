@@ -97,9 +97,9 @@ export default function CustomModal(props) { return (
               </div>
           ))} {/* END render each sentence */}
           <div>
-            <div className="input-field">
+            <div className="input-field" style={{"marginBottom": 0}}>
               <textarea id="textarea1" className="ed-materialize materialize-textarea"></textarea>
-              <label for="textarea1" className="ed-textarea-label">Comment (optional)</label>
+              <label htmlFor="textarea1" className="ed-textarea-label">Comment (optional)</label>
             </div>
           </div>
         </div> {/* END the div for the main editing view */}
