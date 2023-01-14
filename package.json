@@ -26,7 +26,7 @@
     "install": "^0.11.0",
     "webpack": "^4.20.2",
     "webpack-bundle-tracker": "^0.3.0",
-    "webpack-cli": "^3.1.1"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "body-scroll-lock": "^2.6.1",
